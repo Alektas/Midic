@@ -2,38 +2,13 @@ package alektas.midic.theme
 
 import androidx.compose.ui.unit.dp
 
-val paddingHorizontalXs = 8.dp
-val paddingHorizontalS = 12.dp
-val paddingHorizontalM = 16.dp
-val paddingHorizontalL = 20.dp
-val paddingHorizontalXl = 24.dp
-val paddingHorizontalXxl = 28.dp
-val paddingHorizontalXxxl = 32.dp
-
-val paddingVerticalXs = 8.dp
-val paddingVerticalS = 12.dp
-val paddingVerticalM = 16.dp
-val paddingVerticalL = 20.dp
-val paddingVerticalXl = 24.dp
-val paddingVerticalXxl = 28.dp
-val paddingVerticalXxxl = 32.dp
-
-val spacingHorizontalXs = 8.dp
-val spacingHorizontalS = 12.dp
-val spacingHorizontalM = 16.dp
-val spacingHorizontalL = 20.dp
-val spacingHorizontalXl = 24.dp
-val spacingHorizontalXxl = 28.dp
-val spacingHorizontalXxxl = 32.dp
-
-val spacingVerticalXxs = 4.dp
-val spacingVerticalXs = 8.dp
-val spacingVerticalS = 12.dp
-val spacingVerticalM = 16.dp
-val spacingVerticalL = 20.dp
-val spacingVerticalXl = 24.dp
-val spacingVerticalXxl = 28.dp
-val spacingVerticalXxxl = 32.dp
+val paddingXs = 8.dp
+val paddingS = 12.dp
+val paddingM = 16.dp
+val paddingL = 20.dp
+val paddingXl = 24.dp
+val paddingXxl = 28.dp
+val paddingXxxl = 32.dp
 
 val cornersXxs = 4.dp
 val cornersXs = 8.dp
@@ -48,5 +23,9 @@ val sizeIconXxs = 12.dp
 val sizeIconXs = 16.dp
 val sizeIconS = 20.dp
 val sizeIconM = 24.dp
-val sizeIconL = 28.dp
-val sizeIconXL = 32.dp
+val sizeIconL = 75.dp
+val sizeIconXl = 96.dp
+val sizeIconXxl = 128.dp
+val sizeIconXxxl = 150.dp
+
+val cardElevation = 0.dp
