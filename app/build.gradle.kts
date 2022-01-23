@@ -83,6 +83,7 @@ dependencies {
     implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
     implementation(project(":common"))
+    implementation(project(":features:term-search"))
 
     implementation(Lib.Kotlin.STDLIB)
     implementation(Lib.Kotlin.COROUTINES)

@@ -6,18 +6,22 @@ import alektas.midic.theme.AppTheme
 import alektas.midic.theme.cornersXl
 import alektas.midic.theme.paddingM
 import alektas.midic.theme.paddingXs
+import alektas.term_search.ui.SearchBar
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import alektas.ui_components.bottom_sheet.BottomSheetScaffold
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +31,8 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colorScheme.background) {
                     BottomSheetScaffold(
                         modifier = Modifier.fillMaxSize(),
-                        sheetExpandedStateEnabled = true,
                         sheetShape = RoundedCornerShape(topStart = cornersXl, topEnd = cornersXl),
+                        sheetExpandedStateEnabled = true,
                         sheetBackgroundColor = MaterialTheme.colorScheme.surfaceVariant,
                         sheetElevation = 0.dp,
                         sheetContent = {
@@ -52,7 +56,14 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     ) {
-                        Text("Background")
+                        var query by remember { mutableStateOf("") }
+                        SearchBar(
+                            query = query,
+                            withVoiceInputButton = true,
+                            onQueryChanged = {
+                                query = it
+                            }
+                        )
                     }
                 }
             }

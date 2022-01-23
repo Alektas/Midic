@@ -2,6 +2,7 @@ package alektas.midic.theme
 
 import androidx.compose.ui.unit.dp
 
+val paddingXxs = 4.dp
 val paddingXs = 8.dp
 val paddingS = 12.dp
 val paddingM = 16.dp
