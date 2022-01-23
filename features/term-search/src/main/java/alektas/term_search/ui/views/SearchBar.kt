@@ -1,4 +1,4 @@
-package alektas.term_search.ui
+package alektas.term_search.ui.views
 
 import alektas.midic.theme.*
 import alektas.term_search.R
@@ -58,13 +58,13 @@ fun SearchBar(
                     .alignByBaseline()
             )
 
-            if (!withVoiceInputButton) return@Row
-
-            IconButton(onClick = { onVoiceInputClick() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_mic),
-                    contentDescription = stringResource(R.string.descr_btn_voice_search),
-                )
+            if (withVoiceInputButton) {
+                IconButton(onClick = { onVoiceInputClick() }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_mic),
+                        contentDescription = stringResource(R.string.descr_btn_voice_search),
+                    )
+                }
             }
         }
     }

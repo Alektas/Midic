@@ -4,6 +4,7 @@ plugins {
 
 val kotlin = Config.KOTLIN
 val coroutines = "1.6.0-native-mt"
+val inject = "1"
 val appCompat = "1.4.0"
 val coreKtx = "1.7.0"
 val activity = "1.4.0"
@@ -37,6 +38,7 @@ dependencies {
         api("${Lib.Common.CORE_KTX}:$coreKtx")
         api("${Lib.Common.LIFECYCLE_VIEW_MODEL_KTX}:$lifecycle")
         api("${Lib.Common.MATERIAL}:$material")
+        api("${Lib.Common.INJECT}:$inject")
         api("${Lib.Kotlin.STDLIB}:$kotlin")
         api("${Lib.Kotlin.COROUTINES}:$coroutines")
         api("${Lib.Kotlin.COROUTINES_TEST}:$coroutines")

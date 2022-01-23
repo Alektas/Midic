@@ -8,9 +8,14 @@ import alektas.midic.theme.*
 import alektas.ui_components.card.ItemCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,11 +40,40 @@ fun TermCard(
     }
     ItemCard(
         modifier = modifier
-            .height(100.dp),
-        imagePainter = imagePainter,
-        bodyText = term.word,
-        firstLabel = term.transcription,
-        secondLabel = definitionsCount,
+            .height(TermCardDefaults.heightCard),
+        leading = {
+            Image(
+                modifier = Modifier
+                    .size(TermCardDefaults.sizeIcon)
+                    .clip(CircleShape),
+                painter = imagePainter,
+                contentScale = ContentScale.Crop,
+                contentDescription = "Term image"
+            )
+        },
+        firstLine = {
+            Text(
+                text = term.word,
+                maxLines = 1,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        },
+        secondLine = {
+            Text(
+                text = term.transcription,
+                maxLines = 1,
+                style = MaterialTheme.typography.labelMedium,
+            )
+        },
+        thirdLine = definitionsCount?.let {
+            {
+                Text(
+                    text = definitionsCount,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.labelMedium,
+                )
+            }
+        },
         trailing = {
             Image(
                 modifier = Modifier.size(sizeIconM),
@@ -49,6 +83,11 @@ fun TermCard(
         },
         onItemClick = { onItemClick(term) }
     )
+}
+
+object TermCardDefaults {
+    val heightCard = 100.dp
+    val sizeIcon = sizeIconL
 }
 
 @Preview

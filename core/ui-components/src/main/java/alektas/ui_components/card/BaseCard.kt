@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MidicCard(
+fun BaseCard(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     content: @Composable () -> Unit,
