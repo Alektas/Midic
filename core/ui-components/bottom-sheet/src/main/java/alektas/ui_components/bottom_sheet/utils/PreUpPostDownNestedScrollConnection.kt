@@ -1,4 +1,4 @@
-package com.mircod.ui_components.bottom_sheet.utils
+package alektas.ui_components.bottom_sheet.utils
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.SwipeableState
