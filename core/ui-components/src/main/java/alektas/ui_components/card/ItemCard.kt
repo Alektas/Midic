@@ -22,9 +22,11 @@ fun ItemCard(
     firstLabel: String? = null,
     secondLabel: String? = null,
     trailing: (@Composable () -> Unit)? = null,
+    onItemClick: () -> Unit = {},
 ) {
     MidicCard(
-        modifier = modifier
+        modifier = modifier,
+        onClick = onItemClick
     ) {
         Row(
             modifier = Modifier.padding(horizontal = paddingM),

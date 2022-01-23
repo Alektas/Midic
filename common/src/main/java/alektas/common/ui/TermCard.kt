@@ -3,41 +3,51 @@ package alektas.common.ui
 import alektas.common.R
 import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.models.TermItem
+import alektas.common.ui.utils.pluralResource
 import alektas.midic.theme.*
 import alektas.ui_components.card.ItemCard
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun TermCard(
     modifier: Modifier = Modifier,
-    item: TermItem,
+    term: TermItem,
     showDefinitionCount: Boolean = true,
     imagePainter: Painter = painterResource(id = R.drawable.ic_term_image_placeholder),
     onItemClick: (TermItem) -> Unit = {}
 ) {
+    val definitionsCount = if (showDefinitionCount) {
+        pluralResource(
+            resId = R.plurals.plural_term_definitions_count,
+            quantity = term.definitions.count(),
+            formatArgs = arrayOf(term.definitions.count())
+        )
+    } else {
+        null
+    }
     ItemCard(
         modifier = modifier
-            .height(100.dp)
-            .clickable { onItemClick(item) },
+            .height(100.dp),
         imagePainter = imagePainter,
-        bodyText = item.word,
-        firstLabel = item.transcription,
-        secondLabel = if (showDefinitionCount) "${item.definitions.count()} definitions" else null,
+        bodyText = term.word,
+        firstLabel = term.transcription,
+        secondLabel = definitionsCount,
         trailing = {
             Image(
                 modifier = Modifier.size(sizeIconM),
                 painter = painterResource(id = R.drawable.ic_details),
-                contentDescription = "Term clickable icon"
+                contentDescription = stringResource(id = R.string.descr_btn_term_details)
             )
-        }
+        },
+        onItemClick = { onItemClick(term) }
     )
 }
 
@@ -46,7 +56,7 @@ fun TermCard(
 fun TermCardLightPreview() {
     AppTheme(useDarkTheme = false) {
         TermCard(
-            item = getPreviewItem(),
+            term = getPreviewItem(),
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -57,7 +67,7 @@ fun TermCardLightPreview() {
 fun TermCardLightTwoLinePreview() {
     AppTheme(useDarkTheme = false) {
         TermCard(
-            item = getPreviewItem(),
+            term = getPreviewItem(),
             modifier = Modifier.fillMaxWidth(),
             showDefinitionCount = false,
         )
@@ -80,7 +90,7 @@ fun TermCardDarkPreview() {
                 )
             }
         }
-        TermCard(item = getPreviewItem(definitions), modifier = Modifier.fillMaxWidth())
+        TermCard(term = getPreviewItem(definitions), modifier = Modifier.fillMaxWidth())
     }
 }
 
