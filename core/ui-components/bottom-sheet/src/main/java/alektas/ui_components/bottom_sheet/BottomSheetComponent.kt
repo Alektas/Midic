@@ -1,4 +1,4 @@
-package com.mircod.ui_components.bottom_sheet
+package alektas.ui_components.bottom_sheet
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.foundation.gestures.Orientation
@@ -19,7 +19,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.mircod.ui_components.bottom_sheet.utils.PreUpPostDownNestedScrollConnection
+import alektas.ui_components.bottom_sheet.utils.PreUpPostDownNestedScrollConnection
 import kotlinx.coroutines.CancellationException
 import kotlin.math.roundToInt
 

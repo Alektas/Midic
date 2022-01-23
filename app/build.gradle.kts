@@ -80,6 +80,7 @@ dependencies {
     androidTestApi(platform(project(":depconstraints")))
 
     implementation(project(":core:theme"))
+    implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
 
     implementation(Lib.Kotlin.STDLIB)
