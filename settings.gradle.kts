@@ -7,4 +7,5 @@ include(
     ":core:ui-components",
     ":core:ui-components:bottom-sheet",
     ":common",
+    ":features:term-search",
 )
