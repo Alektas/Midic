@@ -52,6 +52,7 @@ dependencies {
         api("${Lib.Retrofit.OKHTTP_LOGGING_INTERCEPTOR}:$okhttp")
         api("${Lib.Compose.ACTIVITY}:$composeActivity")
         api("${Lib.Compose.VIEW_MODEL}:$composeViewModel")
+        api("${Lib.Compose.MATERIAL2}:$compose")
         api("${Lib.Compose.MATERIAL3}:$composeMaterial3")
         api("${Lib.Compose.RUNTIME}:$compose")
         api("${Lib.Compose.ANIMATION}:$compose")

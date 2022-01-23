@@ -32,6 +32,7 @@ object Lib {
     object Compose {
         const val ACTIVITY = "androidx.activity:activity-compose"
         const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-compose"
+        const val MATERIAL2 = "androidx.compose.material:material"
         const val MATERIAL3 = "androidx.compose.material3:material3"
         const val RUNTIME = "androidx.compose.runtime:runtime"
         const val ANIMATION = "androidx.compose.animation:animation"
