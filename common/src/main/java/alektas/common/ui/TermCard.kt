@@ -7,7 +7,6 @@ import alektas.common.ui.utils.pluralResource
 import alektas.midic.theme.*
 import alektas.ui_components.card.ItemCard
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -36,8 +35,7 @@ fun TermCard(
     }
     ItemCard(
         modifier = modifier
-            .height(100.dp)
-            .clickable { onItemClick(item) },
+            .height(100.dp),
         imagePainter = imagePainter,
         bodyText = term.word,
         firstLabel = term.transcription,
@@ -48,7 +46,8 @@ fun TermCard(
                 painter = painterResource(id = R.drawable.ic_details),
                 contentDescription = stringResource(id = R.string.descr_btn_term_details)
             )
-        }
+        },
+        onItemClick = { onItemClick(term) }
     )
 }
 
