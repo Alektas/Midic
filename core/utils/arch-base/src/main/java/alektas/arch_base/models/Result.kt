@@ -1,6 +1,6 @@
 package alektas.arch_base.models
 
-sealed interface Result<S : Any, E : Any> {
+sealed interface Result<out S : Any, out E : Any> {
 
     object Empty : Result<Nothing, Nothing>
 
