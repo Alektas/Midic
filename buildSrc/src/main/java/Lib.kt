@@ -5,6 +5,7 @@ object Lib {
         const val CORE_KTX = "androidx.core:core-ktx"
         const val LIFECYCLE_VIEW_MODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx"
         const val MATERIAL = "com.google.android.material:material"
+        const val INJECT = "javax.inject:javax.inject"
     }
     object Kotlin {
         const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7"

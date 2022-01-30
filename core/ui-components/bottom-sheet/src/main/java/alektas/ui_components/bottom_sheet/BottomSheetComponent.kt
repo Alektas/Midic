@@ -60,8 +60,13 @@ enum class BottomSheetValue {
 @Stable
 class BottomSheetState(
     initialValue: BottomSheetValue,
+    sheetHiddenStateEnabled: Boolean = false,
+    sheetExpandedStateEnabled: Boolean = false,
     animationSpec: AnimationSpec<Float> = SwipeableDefaults.AnimationSpec,
-    confirmStateChange: (BottomSheetValue) -> Boolean = { true }
+    confirmStateChange: (BottomSheetValue) -> Boolean = { state ->
+        !(!sheetHiddenStateEnabled && state == BottomSheetValue.Hidden
+                || !sheetExpandedStateEnabled && state == BottomSheetValue.Expanded)
+    }
 ) : SwipeableState<BottomSheetValue>(
     initialValue = initialValue,
     animationSpec = animationSpec,
@@ -187,12 +192,10 @@ fun rememberBottomSheetState(
  */
 @Composable
 @OptIn(ExperimentalMaterialApi::class)
-fun BottomSheetScaffold(
+fun BottomSheetScaffold( // TODO: add ability to disable user scrolling to Hidden and Expanded states
     sheetContent: @Composable ColumnScope.() -> Unit,
     modifier: Modifier = Modifier,
     bottomSheetState: BottomSheetState = rememberBottomSheetState(BottomSheetValue.Collapsed),
-    sheetHiddenStateEnabled: Boolean = false,
-    sheetExpandedStateEnabled: Boolean = false,
     sheetGesturesEnabled: Boolean = true,
     sheetShape: Shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
     sheetElevation: Dp = BottomSheetDefaults.Elevation,
@@ -214,17 +217,17 @@ fun BottomSheetScaffold(
             .swipeable(
                 state = bottomSheetState,
                 anchors = buildMap {
-                    if (sheetHiddenStateEnabled) put(fullHeight, BottomSheetValue.Hidden)
+                    put(fullHeight, BottomSheetValue.Hidden)
                     put(fullHeight - peekHeightPx, BottomSheetValue.Collapsed)
                     put(fullHeight - semiExpandedHeightPx, BottomSheetValue.SemiExpanded)
-                    if (sheetExpandedStateEnabled) put(0f, BottomSheetValue.Expanded)
+                    put(0f, BottomSheetValue.Expanded)
                 },
                 orientation = Orientation.Vertical,
                 enabled = sheetGesturesEnabled,
-                resistance = null
+                resistance = ResistanceConfig(1.0f, 1f, 150f)
             )
 
-        val minHeight = if (sheetHiddenStateEnabled) 0.dp else sheetPeekHeight
+        val minHeight = 0.dp
         BottomSheetScaffoldStack(
             body = {
                 Surface(
@@ -232,7 +235,7 @@ fun BottomSheetScaffold(
                     contentColor = contentColor
                 ) {
                     Column(Modifier.fillMaxSize()) {
-                        content(PaddingValues(bottom = minHeight))
+                        content(PaddingValues(bottom = 0.dp))
                     }
                 }
             },

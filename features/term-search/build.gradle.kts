@@ -42,10 +42,13 @@ dependencies {
 
     api(platform(project(":depconstraints")))
     implementation(project(":core:theme"))
+    implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
     implementation(project(":common"))
 
     implementation(Lib.Common.MATERIAL)
+    implementation(Lib.Common.INJECT)
+    implementation(Lib.Common.LIFECYCLE_VIEW_MODEL_KTX)
 
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.MATERIAL2)
