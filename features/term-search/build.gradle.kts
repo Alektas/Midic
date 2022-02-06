@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -41,18 +42,25 @@ android {
 dependencies {
 
     api(platform(project(":depconstraints")))
+    kapt(platform(project(":depconstraints")))
+
     implementation(project(":core:theme"))
+    implementation(project(":core:di"))
     implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
     implementation(project(":core:utils:arch-base"))
+    implementation(project(":core:utils:compose"))
     implementation(project(":common"))
 
     implementation(Lib.Common.MATERIAL)
-    implementation(Lib.Common.INJECT)
     implementation(Lib.Common.LIFECYCLE_VIEW_MODEL_KTX)
 
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.MATERIAL2)
     implementation(Lib.Compose.MATERIAL3)
     debugImplementation(Lib.Compose.TOOLING)
+
+    implementation(Lib.Dagger.CORE)
+    kapt(Lib.Dagger.COMPILER)
+
 }
