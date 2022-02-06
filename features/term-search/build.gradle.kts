@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":core:theme"))
     implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
+    implementation(project(":core:utils:arch-base"))
     implementation(project(":common"))
 
     implementation(Lib.Common.MATERIAL)
