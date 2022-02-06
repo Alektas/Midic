@@ -80,8 +80,10 @@ dependencies {
     androidTestApi(platform(project(":depconstraints")))
 
     implementation(project(":core:theme"))
+    implementation(project(":core:di"))
     implementation(project(":core:ui-components"))
     implementation(project(":core:ui-components:bottom-sheet"))
+    implementation(project(":core:utils:compose"))
     implementation(project(":common"))
     implementation(project(":features:term-search"))
 
