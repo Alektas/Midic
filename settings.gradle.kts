@@ -8,6 +8,7 @@ include(
     ":core:ui-components",
     ":core:ui-components:bottom-sheet",
     ":core:utils:arch-base",
+    ":core:utils:compose",
     ":common",
     ":features:term-search",
 )
