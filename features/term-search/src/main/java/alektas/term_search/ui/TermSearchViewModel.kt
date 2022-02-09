@@ -70,6 +70,10 @@ class TermSearchViewModel @Inject constructor(
                 }
             }
         }
+        .catch { error ->
+            emitError(error)
+            emit(ScreenState.NoResults(query))
+        }
         .onStart {
             emit(ScreenState.Loading(query))
         }

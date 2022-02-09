@@ -18,8 +18,8 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -50,4 +50,8 @@ dependencies {
     implementation(Lib.Compose.MATERIAL2)
     implementation(Lib.Compose.MATERIAL3)
     debugImplementation(Lib.Compose.TOOLING)
+
+    implementation(Lib.Retrofit.CORE)
+    implementation(Lib.Retrofit.CONVERTER_GSON)
+
 }

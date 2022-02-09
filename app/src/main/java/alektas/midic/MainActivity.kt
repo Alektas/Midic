@@ -17,8 +17,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
+                    val appComponent = (application as App).appComponent
                     val viewModel = createViewModel {
-                        DaggerTermSearchComponent.factory().create().viewModel()
+                        DaggerTermSearchComponent.factory().create(appComponent).viewModel()
                     }
                     TermSearchScreen(viewModel = viewModel)
                 }
