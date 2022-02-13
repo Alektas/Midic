@@ -33,6 +33,12 @@ android {
         signingConfig = signingConfigs.getByName("release")
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
+        val apiPropertiesFile = rootProject.file("remote_api.properties")
+        val apiProperties = Properties().apply {
+            load(FileInputStream(apiPropertiesFile))
+        }
+        buildConfigField("String", "OWLBOT_API_TOKEN", apiProperties["apiToken.owlbot"] as String)
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["room.schemaLocation"] = "$projectDir/schemas"

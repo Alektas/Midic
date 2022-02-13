@@ -8,10 +8,12 @@ import alektas.term_search.ui.views.TermSearchBottomSheetScaffold
 import alektas.ui_components.bottom_sheet.BottomSheetValue
 import alektas.ui_components.bottom_sheet.rememberBottomSheetState
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
@@ -30,13 +32,14 @@ fun TermSearchScreen(viewModel: TermSearchViewModel) {
         }
     }
 
+    val context = LocalContext.current
     LaunchedEffect(Unit) {
         viewModel.screenEvents.collect { event ->
             Log.d("TermSearchScreen", "event = $event")
             when (event) {
                 ScreenEvent.CollapseSearchResults -> bottomSheetState.collapse()
                 is ScreenEvent.Error -> {
-                    // TODO()
+                    Toast.makeText(context, event.message, Toast.LENGTH_LONG).show() // TODO
                 }
             }
         }
