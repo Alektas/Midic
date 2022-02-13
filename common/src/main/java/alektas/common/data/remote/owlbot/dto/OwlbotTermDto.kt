@@ -6,7 +6,7 @@ data class OwlbotTermDto(
     @SerializedName("word")
     val word: String,
     @SerializedName("pronunciation")
-    val pronunciation: String,
+    val pronunciation: String? = null,
     @SerializedName("definitions")
     val definitions: List<OwlbotDefinitionDto> = listOf()
 )

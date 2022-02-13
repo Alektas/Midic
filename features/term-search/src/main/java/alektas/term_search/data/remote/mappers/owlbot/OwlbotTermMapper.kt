@@ -15,7 +15,7 @@ class OwlbotTermMapper @Inject constructor(
         Term(
             id = input.hashCode().toLong(),
             word = word,
-            transcription = pronunciation,
+            transcription = pronunciation ?: "",
             definitions = definitions.map(definitionMapper::map)
         )
     }
