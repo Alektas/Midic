@@ -54,4 +54,6 @@ dependencies {
     implementation(Lib.Retrofit.CORE)
     implementation(Lib.Retrofit.CONVERTER_GSON)
 
+    implementation(Lib.ImageLoading.COIL)
+
 }

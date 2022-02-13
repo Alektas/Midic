@@ -19,6 +19,7 @@ val composeMaterial3 = "1.0.0-alpha03"
 val composeActivity = "1.4.0"
 val composeViewModel = "2.4.0"
 val accompanist = "0.22.0-rc"
+val coil = "1.4.0"
 val material = "1.5.0"
 val dagger = "2.40.5"
 val retrofit = "2.9.0"
@@ -61,6 +62,7 @@ dependencies {
         api("${Lib.Compose.TOOLING}:$compose")
         api("${Lib.Compose.NAVIGATION}:$navigation")
         api("${Lib.Compose.ACCOMPANIST_PAGER}:$accompanist")
+        api("${Lib.ImageLoading.COIL}:$coil")
         api("${Lib.Test.ARCH_CORE}:$archCoreTesting")
         api("${Lib.Test.RUNNER}:$testRunner")
         api("${Lib.Test.JUnit.PLATFORM}:$junitPlatform")

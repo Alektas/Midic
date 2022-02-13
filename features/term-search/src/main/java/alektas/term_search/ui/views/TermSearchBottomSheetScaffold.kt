@@ -3,6 +3,7 @@ package alektas.term_search.ui.views
 import alektas.common.ui.TermCard
 import alektas.common.ui.ShimmingTermCard
 import alektas.common.ui.models.TermItem
+import alektas.common.ui.utils.getPrimaryImage
 import alektas.midic.theme.*
 import alektas.term_search.ui.models.ScreenState
 import alektas.ui_components.bottom_sheet.BottomSheetScaffold
@@ -77,6 +78,7 @@ private fun BottomSheetContent(
                     TermCard(
                         modifier = Modifier.fillMaxWidth(),
                         term = term,
+                        imagePainter = term.getPrimaryImage(),
                         onItemClick = onTermClick,
                     )
                     Spacer(modifier = Modifier.size(paddingXs))
