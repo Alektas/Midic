@@ -41,6 +41,9 @@ object Lib {
         const val NAVIGATION = "androidx.navigation:navigation-compose"
         const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager"
     }
+    object ImageLoading {
+        const val COIL = "io.coil-kt:coil-compose"
+    }
     object Test {
         const val ARCH_CORE = "android.arch.core:core-testing"
         const val RUNNER = "androidx.test:runner"
