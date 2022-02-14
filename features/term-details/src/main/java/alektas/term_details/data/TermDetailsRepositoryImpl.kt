@@ -1,6 +1,6 @@
 package alektas.term_details.data
 
-import alektas.common.data.local.SelectedTermCache
+import alektas.common.data.local.in_memory.SelectedTermCache
 import alektas.common.domain.Term
 import alektas.term_details.domain.TermDetailsRepository
 import kotlinx.coroutines.flow.StateFlow

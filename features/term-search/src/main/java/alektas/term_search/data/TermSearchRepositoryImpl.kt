@@ -1,7 +1,7 @@
 package alektas.term_search.data
 
 import alektas.common.domain.Term
-import alektas.common.data.local.SelectedTermCacheInput
+import alektas.common.data.local.in_memory.SelectedTermCacheInput
 import alektas.term_search.data.remote.RemoteTermSearchSource
 import alektas.term_search.domain.TermSearchRepository
 import javax.inject.Inject

@@ -1,8 +1,8 @@
 package alektas.midic.di
 
-import alektas.common.data.local.SelectedTermCache
-import alektas.common.data.local.SelectedTermCacheImpl
-import alektas.common.data.local.SelectedTermCacheInput
+import alektas.common.data.local.in_memory.SelectedTermCache
+import alektas.common.data.local.in_memory.SelectedTermCacheImpl
+import alektas.common.data.local.in_memory.SelectedTermCacheInput
 import dagger.Binds
 import dagger.Module
 
