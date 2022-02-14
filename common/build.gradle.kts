@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":core:ui-components"))
 
     implementation(Lib.Common.MATERIAL)
+    implementation(Lib.Common.INJECT)
 
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.MATERIAL2)
