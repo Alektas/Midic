@@ -11,4 +11,5 @@ include(
     ":core:utils:compose",
     ":common",
     ":features:term-search",
+    ":features:term-details",
 )
