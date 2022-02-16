@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
@@ -40,9 +41,12 @@ android {
 
 dependencies {
 
-    api(platform(project(":depconstraints")))
+    implementation(platform(project(":depconstraints")))
+    kapt(platform(project(":depconstraints")))
+
     implementation(project(":core:theme"))
     implementation(project(":core:ui-components"))
+    implementation(project(":core:utils:arch-base"))
 
     implementation(Lib.Common.MATERIAL)
     implementation(Lib.Common.INJECT)
@@ -54,6 +58,9 @@ dependencies {
 
     implementation(Lib.Retrofit.CORE)
     implementation(Lib.Retrofit.CONVERTER_GSON)
+
+    implementation(Lib.Room.KTX)
+    kapt(Lib.Room.COMPILER)
 
     implementation(Lib.ImageLoading.COIL)
 

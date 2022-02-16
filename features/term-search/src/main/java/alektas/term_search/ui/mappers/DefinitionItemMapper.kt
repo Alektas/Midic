@@ -12,6 +12,7 @@ class DefinitionItemMapper @Inject constructor() : DuplexMapper<Definition, Defi
             id = id,
             partOfSpeech = partOfSpeech,
             definition = definition,
+            inBookmarks = inBookmarks,
             example = example,
             imageUrl = imageUrl,
         )
@@ -22,6 +23,7 @@ class DefinitionItemMapper @Inject constructor() : DuplexMapper<Definition, Defi
             id = id,
             partOfSpeech = partOfSpeech,
             definition = definition,
+            inBookmarks = inBookmarks,
             example = example,
             imageUrl = imageUrl,
         )

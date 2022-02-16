@@ -14,6 +14,7 @@ class OwlbotDefinitionMapper @Inject constructor() : Mapper<OwlbotDefinitionDto,
             definition = definition,
             example = example,
             imageUrl = imageUrl,
+            inBookmarks = false
         )
     }
 

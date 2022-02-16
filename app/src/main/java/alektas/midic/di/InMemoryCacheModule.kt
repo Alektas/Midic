@@ -7,7 +7,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface CacheModule {
+interface InMemoryCacheModule {
 
     @Binds
     fun bindSelectedTermCache(impl: SelectedTermCacheImpl): SelectedTermCache

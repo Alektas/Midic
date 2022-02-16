@@ -123,8 +123,9 @@ fun TermCardDarkPreview() {
                     DefinitionItem(
                         id = it.toLong(),
                         partOfSpeech = "noun",
-                        "Definition $it",
-                        "Example $it",
+                        definition = "Definition $it",
+                        example = "Example $it",
+                        inBookmarks = false,
                     )
                 )
             }

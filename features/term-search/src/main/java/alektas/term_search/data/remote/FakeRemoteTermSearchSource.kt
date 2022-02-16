@@ -16,7 +16,7 @@ class FakeRemoteTermSearchSource @Inject constructor(): RemoteTermSearchSource {
                 transcription = "/$query $it/",
                 definitions = buildList {
                     repeat(it) {
-                        add(Definition(it.toLong(), "noun", "Definition"))
+                        add(Definition(it.toLong(), "noun", "Definition", inBookmarks = false))
                     }
                 }
             )
