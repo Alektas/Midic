@@ -92,6 +92,7 @@ dependencies {
     implementation(project(":core:utils:compose"))
     implementation(project(":common"))
     implementation(project(":features:term-search"))
+    implementation(project(":features:term-details"))
 
     implementation(Lib.Kotlin.STDLIB)
     implementation(Lib.Kotlin.COROUTINES)

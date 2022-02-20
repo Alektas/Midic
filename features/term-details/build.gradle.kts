@@ -60,6 +60,8 @@ dependencies {
     implementation(Lib.Compose.MATERIAL_ICONS)
     debugImplementation(Lib.Compose.TOOLING)
 
+    implementation(Lib.Compose.ACCOMPANIST_PAGER)
+
     implementation(Lib.Dagger.CORE)
     kapt(Lib.Dagger.COMPILER)
 
