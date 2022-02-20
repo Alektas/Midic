@@ -57,6 +57,7 @@ dependencies {
         api("${Lib.Compose.VIEW_MODEL}:$composeViewModel")
         api("${Lib.Compose.MATERIAL2}:$compose")
         api("${Lib.Compose.MATERIAL3}:$composeMaterial3")
+        api("${Lib.Compose.MATERIAL_ICONS}:$compose")
         api("${Lib.Compose.RUNTIME}:$compose")
         api("${Lib.Compose.ANIMATION}:$compose")
         api("${Lib.Compose.TOOLING}:$compose")
