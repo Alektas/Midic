@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TermCard(
-    modifier: Modifier = Modifier,
     term: TermItem,
+    modifier: Modifier = Modifier,
     showDefinitionCount: Boolean = true,
     imagePainter: Painter = painterResource(id = R.drawable.ic_term_image_placeholder),
     onItemClick: (TermItem) -> Unit = {}

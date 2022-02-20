@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="descr_definition_share">Share definition</string>
+    <string name="descr_definition_copy">Copy definition</string>
+    <string name="descr_save_to_bookmarks">Save to bookmarks</string>
+</resources>

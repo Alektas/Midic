@@ -76,8 +76,8 @@ private fun BottomSheetContent(
             is ScreenState.Results -> {
                 items(bottomSheetContentState.terms) { term ->
                     TermCard(
-                        modifier = Modifier.fillMaxWidth(),
                         term = term,
+                        modifier = Modifier.fillMaxWidth(),
                         imagePainter = term.getPrimaryImage(),
                         onItemClick = onTermClick,
                     )
