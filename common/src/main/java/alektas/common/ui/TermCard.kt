@@ -3,6 +3,7 @@ package alektas.common.ui
 import alektas.common.R
 import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.models.TermItem
+import alektas.common.ui.utils.generateDefinitionItem
 import alektas.common.ui.utils.pluralResource
 import alektas.midic.theme.*
 import alektas.ui_components.card.ItemCard
@@ -117,18 +118,8 @@ fun TermCardLightTwoLinePreview() {
 @Composable
 fun TermCardDarkPreview() {
     AppTheme(useDarkTheme = true) {
-        val definitions = buildList {
-            repeat(10) {
-                add(
-                    DefinitionItem(
-                        id = it.toLong(),
-                        partOfSpeech = "noun",
-                        definition = "Definition $it",
-                        example = "Example $it",
-                        inBookmarks = false,
-                    )
-                )
-            }
+        val definitions = List(10) {
+            generateDefinitionItem()
         }
         TermCard(term = getPreviewItem(definitions), modifier = Modifier.fillMaxWidth())
     }

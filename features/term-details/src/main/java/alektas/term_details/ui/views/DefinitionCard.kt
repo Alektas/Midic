@@ -1,6 +1,7 @@
 package alektas.term_details.ui.views
 
 import alektas.common.ui.models.DefinitionItem
+import alektas.common.ui.utils.generateDefinitionItem
 import alektas.midic.theme.*
 import alektas.term_details.R
 import androidx.compose.foundation.Image
@@ -15,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.painter.Painter
@@ -31,7 +31,7 @@ fun DefinitionCard(
     Card(
         shape = RoundedCornerShape(cornersM),
         elevation = cardElevation,
-        modifier = modifier.padding(paddingM)
+        modifier = modifier
     ) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Column {
@@ -49,6 +49,7 @@ fun DefinitionCard(
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(horizontal = paddingM)
                 )
                 Spacer(Modifier.height(paddingM))
                 Text(
@@ -110,15 +111,8 @@ enum class Click { Share, Copy, Bookmark }
 @Preview
 fun DefinitionCardPreview() {
     AppTheme(useDarkTheme = false) {
-        val definition = DefinitionItem(
-            id = 0L,
-            definition = LoremIpsum(50).values.joinToString(),
-            partOfSpeech = LoremIpsum(1).values.joinToString(),
-            example = LoremIpsum(30).values.joinToString(),
-            inBookmarks = false,
-        )
         DefinitionCard(
-            item = definition,
+            item = generateDefinitionItem(),
             modifier = Modifier.height(1000.dp)
         ) {
 
