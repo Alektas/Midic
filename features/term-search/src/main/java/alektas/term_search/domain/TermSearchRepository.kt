@@ -6,4 +6,6 @@ interface TermSearchRepository {
 
     suspend fun queryTerms(query: String): List<Term>
 
+    fun selectTerm(term: Term)
+
 }

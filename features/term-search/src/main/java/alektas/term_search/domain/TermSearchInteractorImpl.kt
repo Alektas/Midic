@@ -25,4 +25,8 @@ class TermSearchInteractorImpl @Inject constructor(
         }
     }
 
+    override fun selectTerm(term: Term) {
+        repository.selectTerm(term)
+    }
+
 }

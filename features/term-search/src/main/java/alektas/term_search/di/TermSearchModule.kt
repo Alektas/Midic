@@ -1,5 +1,6 @@
 package alektas.term_search.di
 
+import alektas.arch_base.mappers.DuplexMapper
 import alektas.arch_base.mappers.Mapper
 import alektas.common.data.remote.owlbot.dto.OwlbotDefinitionDto
 import alektas.common.data.remote.owlbot.dto.OwlbotTermDto
@@ -42,10 +43,10 @@ interface TermSearchModule {
     fun bindDefinitionDtoMapper(impl: OwlbotDefinitionMapper): Mapper<OwlbotDefinitionDto, Definition>
 
     @Binds
-    fun bindTermItemMapper(impl: TermItemMapper): Mapper<Term, TermItem>
+    fun bindTermItemMapper(impl: TermItemMapper): DuplexMapper<Term, TermItem>
 
     @Binds
-    fun bindDefinitionItemMapper(impl: DefinitionItemMapper): Mapper<Definition, DefinitionItem>
+    fun bindDefinitionItemMapper(impl: DefinitionItemMapper): DuplexMapper<Definition, DefinitionItem>
 
     companion object {
 
@@ -53,7 +54,7 @@ interface TermSearchModule {
         @Provides
         fun provideViewModel(
             interactor: TermSearchInteractor,
-            termMapper: Mapper<@JvmSuppressWildcards Term, TermItem>,
+            termMapper: DuplexMapper<@JvmSuppressWildcards Term, TermItem>,
         ): TermSearchViewModel = TermSearchViewModel(
             interactor,
             termMapper,

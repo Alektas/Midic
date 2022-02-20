@@ -9,4 +9,6 @@ interface TermSearchInteractor {
 
     fun loadTerms(query: String): Flow<Result<List<Term>, TermSearchError>>
 
+    fun selectTerm(term: Term)
+
 }

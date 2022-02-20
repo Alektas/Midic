@@ -41,27 +41,25 @@ android {
 
 dependencies {
 
-    implementation(platform(project(":depconstraints")))
+    api(platform(project(":depconstraints")))
     kapt(platform(project(":depconstraints")))
 
     implementation(project(":core:theme"))
+    implementation(project(":core:di"))
     implementation(project(":core:ui-components"))
     implementation(project(":core:utils:arch-base"))
+    implementation(project(":core:utils:compose"))
+    implementation(project(":common"))
 
     implementation(Lib.Common.MATERIAL)
-    implementation(Lib.Common.INJECT)
+    implementation(Lib.Common.LIFECYCLE_VIEW_MODEL_KTX)
 
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.MATERIAL2)
     implementation(Lib.Compose.MATERIAL3)
     debugImplementation(Lib.Compose.TOOLING)
 
-    implementation(Lib.Retrofit.CORE)
-    implementation(Lib.Retrofit.CONVERTER_GSON)
-
-    implementation(Lib.Room.KTX)
-    kapt(Lib.Room.COMPILER)
-
-    implementation(Lib.ImageLoading.COIL)
+    implementation(Lib.Dagger.CORE)
+    kapt(Lib.Dagger.COMPILER)
 
 }

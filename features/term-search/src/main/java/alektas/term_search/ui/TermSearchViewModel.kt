@@ -1,6 +1,6 @@
 package alektas.term_search.ui
 
-import alektas.arch_base.mappers.Mapper
+import alektas.arch_base.mappers.DuplexMapper
 import alektas.arch_base.models.Result
 import alektas.common.domain.Term
 import alektas.common.ui.models.TermItem
@@ -18,7 +18,7 @@ import kotlin.time.Duration.Companion.milliseconds
 
 class TermSearchViewModel @Inject constructor(
     private val interactor: TermSearchInteractor,
-    private val termMapper: Mapper<Term, TermItem>,
+    private val termMapper: DuplexMapper<Term, TermItem>,
 ) : ViewModel() {
 
     private val _query = MutableSharedFlow<String>(extraBufferCapacity = Int.MAX_VALUE)
@@ -65,7 +65,7 @@ class TermSearchViewModel @Inject constructor(
                     ScreenState.NoResults(query)
                 }
                 is Result.Success -> {
-                    val termItems = result.data.map { termMapper.map(it) }
+                    val termItems = result.data.map { termMapper.mapInput(it) }
                     ScreenState.Results(query, termItems)
                 }
             }
@@ -87,7 +87,7 @@ class TermSearchViewModel @Inject constructor(
 
     private fun handleTermSelection(termItem: TermItem) {
         emitEvent(ScreenEvent.CollapseSearchResults)
-        // TODO: provide selected term to repository
+        interactor.selectTerm(termMapper.mapOutput(termItem))
     }
 
     private fun emitError(error: TermSearchError) {
