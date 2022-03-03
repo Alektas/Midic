@@ -77,7 +77,7 @@ fun TermCard(
         },
         trailing = {
             Image(
-                modifier = Modifier.size(sizeIconM),
+                modifier = Modifier.size(sizeIconX6),
                 painter = painterResource(id = R.drawable.ic_details),
                 contentDescription = stringResource(id = R.string.descr_btn_term_details)
             )
@@ -88,7 +88,7 @@ fun TermCard(
 
 object TermCardDefaults {
     val heightCard = 100.dp
-    val sizeIcon = sizeIconL
+    val sizeIcon = sizeIconX20
 }
 
 @Preview

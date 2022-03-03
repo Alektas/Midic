@@ -2,6 +2,8 @@ package alektas.midic.theme
 
 import androidx.compose.ui.unit.dp
 
+private val baseDimension = 4.dp
+
 val paddingXxs = 4.dp
 val paddingXs = 8.dp
 val paddingS = 12.dp
@@ -20,13 +22,13 @@ val cornersXl = 24.dp
 val cornersXxl = 28.dp
 val cornersXxxl = 32.dp
 
-val sizeIconXxs = 12.dp
-val sizeIconXs = 16.dp
-val sizeIconS = 20.dp
-val sizeIconM = 24.dp
-val sizeIconL = 75.dp
-val sizeIconXl = 96.dp
-val sizeIconXxl = 128.dp
-val sizeIconXxxl = 150.dp
+val sizeIconX3 = baseDimension * 3
+val sizeIconX4 = baseDimension * 4
+val sizeIconX5 = baseDimension * 5
+val sizeIconX6 = baseDimension * 6
+val sizeIconX20 = baseDimension * 20
+val sizeIconX24 = baseDimension * 24
+val sizeIconX32 = baseDimension * 32
+val sizeIconX40 = baseDimension * 40
 
 val cardElevation = 0.dp
