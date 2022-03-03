@@ -4,23 +4,23 @@ import androidx.compose.ui.unit.dp
 
 private val baseDimension = 4.dp
 
-val paddingXxs = 4.dp
-val paddingXs = 8.dp
-val paddingS = 12.dp
-val paddingM = 16.dp
-val paddingL = 20.dp
-val paddingXl = 24.dp
-val paddingXxl = 28.dp
-val paddingXxxl = 32.dp
+val paddingX1 = baseDimension
+val paddingX2 = baseDimension * 2
+val paddingX3 = baseDimension * 3
+val paddingX4 = baseDimension * 4
+val paddingX5 = baseDimension * 5
+val paddingX6 = baseDimension * 6
+val paddingX7 = baseDimension * 7
+val paddingX8 = baseDimension * 8
 
-val cornersXxs = 4.dp
-val cornersXs = 8.dp
-val cornersS = 12.dp
-val cornersM = 16.dp
-val cornersL = 20.dp
-val cornersXl = 24.dp
-val cornersXxl = 28.dp
-val cornersXxxl = 32.dp
+val cornersX1 = baseDimension
+val cornersX2 = baseDimension * 2
+val cornersX3 = baseDimension * 3
+val cornersX4 = baseDimension * 4
+val cornersX5 = baseDimension * 5
+val cornersX6 = baseDimension * 6
+val cornersX7 = baseDimension * 7
+val cornersX8 = baseDimension * 8
 
 val sizeIconX3 = baseDimension * 3
 val sizeIconX4 = baseDimension * 4

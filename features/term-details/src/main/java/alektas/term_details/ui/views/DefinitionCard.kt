@@ -29,38 +29,38 @@ fun DefinitionCard(
     onClick: (Click) -> Unit
 ) = with(item) {
     Card(
-        shape = RoundedCornerShape(cornersM),
+        shape = RoundedCornerShape(cornersX4),
         elevation = cardElevation,
         modifier = modifier
     ) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Column {
-                Spacer(Modifier.height(paddingM))
+                Spacer(Modifier.height(paddingX4))
                 Image(
                     painter = imagePainter,
                     contentDescription = null,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                         .size(sizeIconX40)
                 )
-                Spacer(Modifier.height(paddingM))
+                Spacer(Modifier.height(paddingX4))
                 Text(
                     text = "[$partOfSpeech]",
                     style = MaterialTheme.typography.caption,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = paddingM)
+                        .padding(horizontal = paddingX4)
                 )
-                Spacer(Modifier.height(paddingM))
+                Spacer(Modifier.height(paddingX4))
                 Text(
                     text = definition,
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = paddingM)
+                        .padding(horizontal = paddingX4)
                 )
-                Spacer(Modifier.height(paddingM))
+                Spacer(Modifier.height(paddingX4))
                 if (example != null) {
                     Text(
                         text = "\"$example\"",
@@ -68,10 +68,10 @@ fun DefinitionCard(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = paddingM)
+                            .padding(horizontal = paddingX4)
                     )
                 }
-                Spacer(Modifier.height(paddingM))
+                Spacer(Modifier.height(paddingX4))
             }
             ButtonPanel(inBookmarks, onClick = onClick)
         }
