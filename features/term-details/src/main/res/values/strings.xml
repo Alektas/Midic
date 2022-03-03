@@ -4,4 +4,5 @@
     <string name="descr_definition_copy">Copy definition</string>
     <string name="descr_save_to_bookmarks">Save to bookmarks</string>
     <string name="search_init_hint">type something to search for definitions</string>
+    <string name="search_results_hint">select item to see description</string>
 </resources>
