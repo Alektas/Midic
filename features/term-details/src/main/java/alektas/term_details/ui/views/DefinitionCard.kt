@@ -40,7 +40,7 @@ fun DefinitionCard(
                     painter = imagePainter,
                     contentDescription = null,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
-                        .size(sizeIconXxxl)
+                        .size(sizeIconX40)
                 )
                 Spacer(Modifier.height(paddingM))
                 Text(
