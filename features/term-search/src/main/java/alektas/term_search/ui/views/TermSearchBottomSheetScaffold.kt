@@ -36,18 +36,18 @@ fun TermSearchBottomSheetScaffold(
     BottomSheetScaffold(
         modifier = modifier,
         content = content,
-        sheetShape = RoundedCornerShape(topStart = cornersXl, topEnd = cornersXl),
+        sheetShape = RoundedCornerShape(topStart = cornersX6, topEnd = cornersX6),
         bottomSheetState = bottomSheetState,
         sheetBackgroundColor = MaterialTheme.colorScheme.surfaceVariant,
         sheetElevation = 0.dp,
-        sheetPeekHeight = badgeHeight + paddingXs * 2,
+        sheetPeekHeight = badgeHeight + paddingX2 * 2,
         sheetContent = {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Spacer(modifier = Modifier.size(paddingXs))
+                Spacer(modifier = Modifier.size(paddingX2))
                 BottomSheetBadge()
-                Spacer(modifier = Modifier.size(paddingXs))
+                Spacer(modifier = Modifier.size(paddingX2))
                 BottomSheetContent(bottomSheetContentState, onTermClick)
             }
         },
@@ -61,13 +61,13 @@ private fun BottomSheetContent(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(horizontal = paddingM)
+        contentPadding = PaddingValues(horizontal = paddingX4)
     ) {
         when (bottomSheetContentState) {
             is ScreenState.Loading -> {
                 items(6) {
                     ShimmingTermCard()
-                    Spacer(modifier = Modifier.size(paddingXs))
+                    Spacer(modifier = Modifier.size(paddingX2))
                 }
             }
             is ScreenState.NoResults -> {
@@ -81,7 +81,7 @@ private fun BottomSheetContent(
                         imagePainter = term.getPrimaryImage(),
                         onItemClick = onTermClick,
                     )
-                    Spacer(modifier = Modifier.size(paddingXs))
+                    Spacer(modifier = Modifier.size(paddingX2))
                 }
             }
         }
@@ -94,7 +94,7 @@ private fun BottomSheetBadge() {
         modifier = Modifier
             .height(badgeHeight)
             .width(56.dp)
-            .clip(RoundedCornerShape(cornersXxs))
+            .clip(RoundedCornerShape(cornersX1))
             .background(MaterialTheme.colorScheme.tertiary)
     )
 }

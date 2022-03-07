@@ -2,7 +2,7 @@ package alektas.term_details.ui.views
 
 import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.utils.generateDefinitionItem
-import alektas.midic.theme.paddingXl
+import alektas.midic.theme.paddingX6
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -25,7 +25,7 @@ fun DefinitionsCarousel(
 ) {
     HorizontalPager(
         count = definitions.size,
-        contentPadding = PaddingValues(horizontal = paddingXl),
+        contentPadding = PaddingValues(horizontal = paddingX6),
         modifier = modifier
     ) { page ->
         DefinitionCard(

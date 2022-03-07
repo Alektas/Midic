@@ -29,7 +29,7 @@ fun SearchBar(
         color = MaterialTheme.colorScheme.surfaceVariant
     ) {
         Row(
-            modifier = Modifier.padding(start = paddingM, end = paddingXxs),
+            modifier = Modifier.padding(start = paddingX4, end = paddingX1),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             BasicTextField(
@@ -44,7 +44,7 @@ fun SearchBar(
                             imageVector = Icons.Outlined.Search,
                             contentDescription = null,
                         )
-                        Spacer(modifier = Modifier.size(paddingXs))
+                        Spacer(modifier = Modifier.size(paddingX2))
                         if (query.isEmpty()) {
                             Text(hint)
                         } else {

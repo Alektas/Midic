@@ -1,7 +1,7 @@
 package alektas.ui_components.card
 
 import alektas.midic.theme.cardElevation
-import alektas.midic.theme.cornersM
+import alektas.midic.theme.cornersX4
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -19,7 +19,7 @@ fun BaseCard(
 ) {
     Card(
         modifier = modifier,
-        shape = RoundedCornerShape(corner = CornerSize(cornersM)),
+        shape = RoundedCornerShape(corner = CornerSize(cornersX4)),
         backgroundColor = MaterialTheme.colorScheme.surface,
         elevation = cardElevation,
         onClick = onClick,

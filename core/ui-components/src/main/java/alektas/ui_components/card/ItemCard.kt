@@ -1,6 +1,6 @@
 package alektas.ui_components.card
 
-import alektas.midic.theme.paddingM
+import alektas.midic.theme.paddingX4
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,12 +21,12 @@ fun ItemCard(
         onClick = onItemClick
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = paddingM),
+            modifier = Modifier.padding(horizontal = paddingX4),
             verticalAlignment = Alignment.CenterVertically
         ) {
             leading?.let {
                 it()
-                Spacer(modifier = Modifier.size(paddingM))
+                Spacer(modifier = Modifier.size(paddingX4))
             }
             Column(
                 modifier = Modifier.weight(1.0f),
@@ -37,7 +37,7 @@ fun ItemCard(
                 thirdLine?.invoke()
             }
             trailing?.let {
-                Spacer(modifier = Modifier.size(paddingM))
+                Spacer(modifier = Modifier.size(paddingX4))
                 trailing()
             }
         }
