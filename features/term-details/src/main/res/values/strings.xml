@@ -7,4 +7,6 @@
     <string name="search_results_hint">select item to see description</string>
     <string name="search_not_found_hint">nothing found</string>
     <string name="btn_get_random">Get random</string>
+    <string name="search_error_hint">ooops.. something wrong happens</string>
+    <string name="btn_try_again">Try again</string>
 </resources>
