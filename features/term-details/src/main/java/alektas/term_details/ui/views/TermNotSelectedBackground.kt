@@ -13,12 +13,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchResultsHintBackground(
+fun TermNotSelectedBackground(
     modifier: Modifier = Modifier,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_glasses)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_glasses)) }
     ) {
         Text(
             text = stringResource(id = R.string.search_results_hint),
@@ -35,8 +35,8 @@ fun SearchResultsHintBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchResultsHintBackgroundPreview() {
-    SearchResultsHintBackground(
+private fun SearchResultsHintBackgroundPreview() {
+    TermNotSelectedBackground(
         modifier = Modifier.fillMaxSize()
     )
 }

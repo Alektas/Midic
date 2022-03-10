@@ -14,13 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchNotFoundBackground(
+fun NothingFoundBackground(
     modifier: Modifier = Modifier,
     onGetRandomClick: () -> Unit,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_sad)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_sad)) }
     ) {
         Text(
             text = stringResource(id = R.string.search_not_found_hint),
@@ -38,8 +38,8 @@ fun SearchNotFoundBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchNotFoundBackgroundPreview() {
-    SearchNotFoundBackground(
+private fun SearchNotFoundBackgroundPreview() {
+    NothingFoundBackground(
         modifier = Modifier.fillMaxSize()
     ) {
 

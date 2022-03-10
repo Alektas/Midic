@@ -14,12 +14,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchInitBackground(
+fun InitBackground(
     modifier: Modifier = Modifier,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_magnifier)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_magnifier)) }
     ) {
         Text(
             text = stringResource(id = R.string.search_init_hint),
@@ -36,8 +36,8 @@ fun SearchInitBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchInitBackgroundPreview() {
-    SearchInitBackground(
+private fun SearchInitBackgroundPreview() {
+    InitBackground(
         modifier = Modifier.fillMaxSize()
     )
 }

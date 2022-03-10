@@ -14,13 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchErrorBackground(
+fun ErrorBackground(
     modifier: Modifier = Modifier,
     onRetryClick: () -> Unit,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_sad)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_sad)) }
     ) {
         Text(
             text = stringResource(id = R.string.search_error_hint),
@@ -38,8 +38,8 @@ fun SearchErrorBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchErrorBackgroundPreview() {
-    SearchErrorBackground(
+private fun SearchErrorBackgroundPreview() {
+    ErrorBackground(
         modifier = Modifier.fillMaxSize()
     ) {
 
