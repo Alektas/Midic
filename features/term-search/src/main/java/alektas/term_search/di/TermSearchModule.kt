@@ -6,7 +6,6 @@ import alektas.common.data.remote.owlbot.dto.OwlbotDefinitionDto
 import alektas.common.data.remote.owlbot.dto.OwlbotTermDto
 import alektas.common.domain.Definition
 import alektas.common.domain.Term
-import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.models.TermItem
 import alektas.core.di.scopes.ScreenScope
 import alektas.term_search.data.TermSearchRepositoryImpl
@@ -18,8 +17,6 @@ import alektas.term_search.domain.TermSearchInteractor
 import alektas.term_search.domain.TermSearchInteractorImpl
 import alektas.term_search.domain.TermSearchRepository
 import alektas.term_search.ui.TermSearchViewModel
-import alektas.term_search.ui.mappers.DefinitionItemMapper
-import alektas.term_search.ui.mappers.TermItemMapper
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -41,12 +38,6 @@ interface TermSearchModule {
 
     @Binds
     fun bindDefinitionDtoMapper(impl: OwlbotDefinitionMapper): Mapper<OwlbotDefinitionDto, Definition>
-
-    @Binds
-    fun bindTermItemMapper(impl: TermItemMapper): DuplexMapper<Term, TermItem>
-
-    @Binds
-    fun bindDefinitionItemMapper(impl: DefinitionItemMapper): DuplexMapper<Definition, DefinitionItem>
 
     companion object {
 

@@ -1,4 +1,4 @@
-package alektas.term_search.ui.mappers
+package alektas.common.ui.mappers
 
 import alektas.arch_base.mappers.DuplexMapper
 import alektas.common.domain.Definition

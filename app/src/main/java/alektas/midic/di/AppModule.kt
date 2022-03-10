@@ -6,7 +6,8 @@ import dagger.Module
     includes = [
         NetworkModule::class,
         StorageModule::class,
-        InMemoryCacheModule::class
+        InMemoryCacheModule::class,
+        CommonMappersModule::class,
     ]
 )
 interface AppModule {
