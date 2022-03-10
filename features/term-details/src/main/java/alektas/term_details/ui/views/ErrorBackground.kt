@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchErrorBackground(
+fun ErrorBackground(
     modifier: Modifier = Modifier,
     onRetryClick: () -> Unit,
 ) {
@@ -38,8 +38,8 @@ fun SearchErrorBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchErrorBackgroundPreview() {
-    SearchErrorBackground(
+private fun SearchErrorBackgroundPreview() {
+    ErrorBackground(
         modifier = Modifier.fillMaxSize()
     ) {
 

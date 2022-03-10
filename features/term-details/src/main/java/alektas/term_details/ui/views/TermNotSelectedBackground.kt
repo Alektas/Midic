@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchResultsHintBackground(
+fun TermNotSelectedBackground(
     modifier: Modifier = Modifier,
 ) {
     SearchBackground(
@@ -35,8 +35,8 @@ fun SearchResultsHintBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchResultsHintBackgroundPreview() {
-    SearchResultsHintBackground(
+private fun SearchResultsHintBackgroundPreview() {
+    TermNotSelectedBackground(
         modifier = Modifier.fillMaxSize()
     )
 }

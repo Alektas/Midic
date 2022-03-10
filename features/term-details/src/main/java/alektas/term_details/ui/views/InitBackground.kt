@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchInitBackground(
+fun InitBackground(
     modifier: Modifier = Modifier,
 ) {
     SearchBackground(
@@ -36,8 +36,8 @@ fun SearchInitBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchInitBackgroundPreview() {
-    SearchInitBackground(
+private fun SearchInitBackgroundPreview() {
+    InitBackground(
         modifier = Modifier.fillMaxSize()
     )
 }

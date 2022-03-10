@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchNotFoundBackground(
+fun NothingFoundBackground(
     modifier: Modifier = Modifier,
     onGetRandomClick: () -> Unit,
 ) {
@@ -38,8 +38,8 @@ fun SearchNotFoundBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchNotFoundBackgroundPreview() {
-    SearchNotFoundBackground(
+private fun SearchNotFoundBackgroundPreview() {
+    NothingFoundBackground(
         modifier = Modifier.fillMaxSize()
     ) {
 
