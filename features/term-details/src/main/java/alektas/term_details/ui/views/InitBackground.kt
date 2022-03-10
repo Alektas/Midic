@@ -2,7 +2,8 @@ package alektas.term_details.ui.views
 
 import alektas.term_details.R
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,15 +14,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchResultsHintBackground(
+fun SearchInitBackground(
     modifier: Modifier = Modifier,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_glasses)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_magnifier)) }
     ) {
         Text(
-            text = stringResource(id = R.string.search_results_hint),
+            text = stringResource(id = R.string.search_init_hint),
             style = MaterialTheme.typography.bodySmall,
         )
         Image(
@@ -35,8 +36,8 @@ fun SearchResultsHintBackground(
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchResultsHintBackgroundPreview() {
-    SearchResultsHintBackground(
+fun SearchInitBackgroundPreview() {
+    SearchInitBackground(
         modifier = Modifier.fillMaxSize()
     )
 }

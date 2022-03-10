@@ -14,32 +14,32 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SearchErrorBackground(
+fun SearchNotFoundBackground(
     modifier: Modifier = Modifier,
-    onRetryClick: () -> Unit,
+    onGetRandomClick: () -> Unit,
 ) {
     SearchBackground(
         modifier = modifier,
-        headerImage = painterResource(id = R.drawable.ic_sad)
+        header = { DefaultSearchBackgroundHeader(painterResource(id = R.drawable.ic_sad)) }
     ) {
         Text(
-            text = stringResource(id = R.string.search_error_hint),
+            text = stringResource(id = R.string.search_not_found_hint),
             style = MaterialTheme.typography.bodySmall,
         )
         TextButton(
-            onClick = onRetryClick
+            onClick = onGetRandomClick
         ) {
-            Icon(painter = painterResource(id = R.drawable.ic_refresh), contentDescription = null)
+            Icon(painter = painterResource(id = R.drawable.ic_dice), contentDescription = null)
             Spacer(modifier = Modifier.size(paddingX2))
-            Text(text = stringResource(id = R.string.btn_try_again))
+            Text(text = stringResource(id = R.string.btn_get_random))
         }
     }
 }
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SearchErrorBackgroundPreview() {
-    SearchErrorBackground(
+fun SearchNotFoundBackgroundPreview() {
+    SearchNotFoundBackground(
         modifier = Modifier.fillMaxSize()
     ) {
 

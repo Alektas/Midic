@@ -2,20 +2,16 @@ package alektas.term_details.ui.views
 
 import alektas.midic.theme.sizeIconX32
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SearchBackground(
-    headerImage: Painter,
     modifier: Modifier = Modifier,
+    header: @Composable ColumnScope.() -> Unit,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
@@ -23,21 +19,30 @@ fun SearchBackground(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        Image(
-            painter = headerImage,
-            contentDescription = null,
-            modifier = Modifier
-                .size(sizeIconX32)
-                .weight(SearchBackgroundDefaults.headerImageWeight)
-        )
+        header()
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
-            modifier = Modifier.weight(SearchBackgroundDefaults.contentWeight)
+            modifier = Modifier
+                .weight(SearchBackgroundDefaults.contentWeight)
                 .fillMaxSize(),
             content = content
         )
     }
+}
+
+@Composable
+fun ColumnScope.DefaultSearchBackgroundHeader(
+    painter: Painter,
+    modifier: Modifier = Modifier,
+) {
+    Image(
+        painter = painter,
+        contentDescription = null,
+        modifier = modifier
+            .size(sizeIconX32)
+            .weight(SearchBackgroundDefaults.headerImageWeight)
+    )
 }
 
 private object SearchBackgroundDefaults {
