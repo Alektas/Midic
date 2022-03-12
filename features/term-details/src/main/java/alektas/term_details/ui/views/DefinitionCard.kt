@@ -4,6 +4,7 @@ import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.utils.generateDefinitionItem
 import alektas.midic.theme.*
 import alektas.term_details.R
+import alektas.term_details.ui.models.Action
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +27,7 @@ fun DefinitionCard(
     item: DefinitionItem,
     modifier: Modifier = Modifier,
     imagePainter: Painter = painterResource(id = R.drawable.ic_term_image_placeholder),
-    onClick: (Click) -> Unit
+    onClick: (Action) -> Unit
 ) = with(item) {
     Card(
         shape = RoundedCornerShape(cornersX4),
@@ -39,7 +40,8 @@ fun DefinitionCard(
                 Image(
                     painter = imagePainter,
                     contentDescription = null,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
                         .size(sizeIconX40)
                 )
                 Spacer(Modifier.height(paddingX4))
@@ -73,16 +75,16 @@ fun DefinitionCard(
                 }
                 Spacer(Modifier.height(paddingX4))
             }
-            ButtonPanel(inBookmarks, onClick = onClick)
+            ButtonPanel(item, onClick = onClick)
         }
     }
 }
 
 @Composable
 private fun ButtonPanel(
-    inBookmarks: Boolean,
+    definition: DefinitionItem,
     modifier: Modifier = Modifier,
-    onClick: (Click) -> Unit
+    onClick: (Action) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -90,22 +92,20 @@ private fun ButtonPanel(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        IconButton(onClick = { onClick(Click.Share) }) {
+        IconButton(onClick = { onClick(Action.Share(definition)) }) {
             Icon(Icons.Outlined.Share, stringResource(R.string.descr_definition_share))
         }
-        IconButton(onClick = { onClick(Click.Copy) }) {
+        IconButton(onClick = { onClick(Action.Copy(definition)) }) {
             Icon(Icons.Outlined.ContentCopy, stringResource(R.string.descr_definition_copy))
         }
-        IconButton(onClick = { onClick(Click.Bookmark) }) {
+        IconButton(onClick = { onClick(Action.Bookmark(definition)) }) {
             Icon(
-                if (inBookmarks) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
+                if (definition.inBookmarks) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
                 stringResource(R.string.descr_save_to_bookmarks)
             )
         }
     }
 }
-
-enum class Click { Share, Copy, Bookmark }
 
 @Composable
 @Preview
