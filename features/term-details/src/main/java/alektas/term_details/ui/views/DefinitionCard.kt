@@ -7,6 +7,7 @@ import alektas.term_details.R
 import alektas.term_details.ui.models.Action
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 
@@ -43,6 +45,7 @@ fun DefinitionCard(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .size(sizeIconX40)
+                        .clip(CircleShape)
                 )
                 Spacer(Modifier.height(paddingX4))
                 Text(

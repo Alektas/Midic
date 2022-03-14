@@ -2,6 +2,7 @@ package alektas.term_details.ui.views
 
 import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.utils.generateDefinitionItem
+import alektas.common.ui.utils.rememberImagePainter
 import alektas.midic.theme.paddingX6
 import alektas.term_details.ui.models.Action
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,8 +30,10 @@ fun DefinitionsCarousel(
         contentPadding = PaddingValues(horizontal = paddingX6),
         modifier = modifier
     ) { page ->
+        val definition = definitions[page]
         DefinitionCard(
-            item = definitions[page],
+            item = definition,
+            imagePainter = definition.rememberImagePainter(),
             onClick = onClick,
             modifier = Modifier
                 .fillMaxSize()
