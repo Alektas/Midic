@@ -1,4 +1,4 @@
-package alektas.common.data.local.in_memory
+package alektas.common.data.local.in_memory.term_selection
 
 import alektas.common.domain.Term
 

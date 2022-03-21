@@ -6,8 +6,8 @@ import alektas.common.data.local.db.dao.BookmarksDao
 import alektas.common.data.local.db.entities.DefinitionEntity
 import alektas.common.data.local.db.entities.TermEntity
 import alektas.common.data.local.db.models.BookmarkTerm
-import alektas.common.data.local.in_memory.SelectedTermCache
-import alektas.common.data.local.in_memory.TermSelection
+import alektas.common.data.local.in_memory.term_selection.SelectedTermCache
+import alektas.common.data.local.in_memory.term_selection.TermSelection
 import alektas.common.domain.Bookmark
 import alektas.common.domain.Definition
 import alektas.common.domain.Term

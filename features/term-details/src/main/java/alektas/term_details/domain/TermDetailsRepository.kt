@@ -1,7 +1,7 @@
 package alektas.term_details.domain
 
 import alektas.arch_base.models.Result
-import alektas.common.data.local.in_memory.TermSelection
+import alektas.common.data.local.in_memory.term_selection.TermSelection
 import alektas.common.domain.Bookmark
 import alektas.common.domain.Definition
 import kotlinx.coroutines.flow.Flow

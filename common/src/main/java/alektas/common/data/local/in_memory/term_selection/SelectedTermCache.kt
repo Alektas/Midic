@@ -1,4 +1,4 @@
-package alektas.common.data.local.in_memory
+package alektas.common.data.local.in_memory.term_selection
 
 import alektas.arch_base.models.Result
 import kotlinx.coroutines.flow.Flow

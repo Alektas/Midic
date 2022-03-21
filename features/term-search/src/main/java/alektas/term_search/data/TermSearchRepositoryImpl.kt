@@ -2,8 +2,8 @@ package alektas.term_search.data
 
 import alektas.arch_base.models.Result
 import alektas.common.domain.Term
-import alektas.common.data.local.in_memory.SelectedTermCacheInput
-import alektas.common.data.local.in_memory.TermSelection
+import alektas.common.data.local.in_memory.term_selection.SelectedTermCacheInput
+import alektas.common.data.local.in_memory.term_selection.TermSelection
 import alektas.term_search.data.remote.RemoteTermSearchSource
 import alektas.term_search.domain.TermSearchRepository
 import javax.inject.Inject
