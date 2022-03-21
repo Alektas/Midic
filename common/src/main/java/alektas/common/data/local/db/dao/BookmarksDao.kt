@@ -17,25 +17,25 @@ abstract class BookmarksDao {
         save(definition)
         val bookmark = BookmarkEntity(
             termWord = term.word,
-            definitionId = definition.id,
+            definition = definition.definition,
         )
         saveBookmark(bookmark)
     }
 
-    @Query("DELETE FROM bookmarks WHERE definition_id = :definitionId")
-    abstract suspend fun deleteDefinition(definitionId: Long)
+    @Query("DELETE FROM bookmarks WHERE definition = :definition")
+    abstract suspend fun deleteDefinition(definition: String)
 
     @Transaction
     @Query("SELECT * FROM bookmarks")
-    abstract fun observeBookmarks(): Flow<BookmarkTerm>
+    abstract fun observeBookmarks(): Flow<List<BookmarkTerm>>
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = REPLACE)
     protected abstract suspend fun saveBookmark(bookmark: BookmarkEntity)
 
     @Insert(onConflict = IGNORE)
     protected abstract suspend fun save(termEntity: TermEntity)
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = REPLACE)
     protected abstract suspend fun save(definitionEntity: DefinitionEntity)
 
 }
