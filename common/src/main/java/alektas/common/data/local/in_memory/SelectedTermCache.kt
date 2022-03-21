@@ -1,10 +1,10 @@
 package alektas.common.data.local.in_memory
 
-import alektas.common.domain.Term
-import kotlinx.coroutines.flow.StateFlow
+import alektas.arch_base.models.Result
+import kotlinx.coroutines.flow.Flow
 
 interface SelectedTermCache {
 
-    fun observeSelectedTerm(): StateFlow<Term?>
+    fun observeSelectedTerm(): Flow<Result<TermSelection, Exception>?>
 
 }

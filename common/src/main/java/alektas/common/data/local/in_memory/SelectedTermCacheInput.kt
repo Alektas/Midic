@@ -1,9 +1,9 @@
 package alektas.common.data.local.in_memory
 
-import alektas.common.domain.Term
+import alektas.arch_base.models.Result
 
 interface SelectedTermCacheInput {
 
-    fun emit(term: Term)
+    fun emit(result: Result<TermSelection, Exception>)
 
 }

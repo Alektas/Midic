@@ -1,18 +1,18 @@
 package alektas.common.data.local.in_memory
 
-import alektas.common.domain.Term
+import alektas.arch_base.models.Result
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class SelectedTermCacheImpl @Inject constructor(): SelectedTermCache, SelectedTermCacheInput {
 
-    private val selectedTerm = MutableStateFlow<Term?>(null)
+    private val selectedTerm = MutableStateFlow<Result<TermSelection, Exception>?>(null)
 
-    override fun observeSelectedTerm(): StateFlow<Term?> = selectedTerm
+    override fun observeSelectedTerm(): Flow<Result<TermSelection, Exception>?> = selectedTerm
 
-    override fun emit(term: Term) {
-        selectedTerm.value = term
+    override fun emit(result: Result<TermSelection, Exception>) {
+        selectedTerm.value = result
     }
 
 }
