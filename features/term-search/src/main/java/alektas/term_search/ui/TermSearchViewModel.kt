@@ -57,6 +57,9 @@ class TermSearchViewModel @Inject constructor(
     private suspend fun handleQuery(query: String): Flow<ScreenState> = interactor.loadTerms(query)
         .map { result ->
             when (result) {
+                is Result.Loading -> {
+                    ScreenState.Loading(query)
+                }
                 is Result.Empty -> {
                     ScreenState.NoResults(query)
                 }
@@ -73,9 +76,6 @@ class TermSearchViewModel @Inject constructor(
         .catch { error ->
             emitError(error)
             emit(ScreenState.NoResults(query))
-        }
-        .onStart {
-            emit(ScreenState.Loading(query))
         }
 
     fun onAction(action: ScreenAction) {

@@ -12,11 +12,7 @@ class TermSearchInteractorImpl @Inject constructor(
 ) : TermSearchInteractor {
 
     override fun loadTerms(query: String): Flow<Result<List<Term>, TermSearchError>> = flow {
-        if (query.isBlank()) {
-            emit(Result.Empty)
-            return@flow
-        }
-
+        emit(Result.Loading)
         val terms = repository.queryTerms(query)
         if (terms.isEmpty()) {
             emit(Result.Empty)
