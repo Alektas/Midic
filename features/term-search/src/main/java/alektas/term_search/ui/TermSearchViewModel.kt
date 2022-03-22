@@ -6,7 +6,6 @@ import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
 import alektas.common.domain.Term
 import alektas.common.ui.models.TermItem
 import alektas.term_search.domain.TermSearchInteractor
-import alektas.term_search.domain.models.TermSearchError
 import alektas.term_search.ui.models.ScreenAction
 import alektas.term_search.ui.models.ScreenEvent
 import alektas.term_search.ui.models.ScreenState
@@ -102,10 +101,6 @@ class TermSearchViewModel @Inject constructor(
     private fun handleTermSelection(termItem: TermItem) {
         emitEvent(ScreenEvent.CollapseSearchResults)
         interactor.selectTerm(termMapper.mapOutput(termItem))
-    }
-
-    private fun emitError(error: TermSearchError) {
-        emitEvent(ScreenEvent.Error(error.toString())) // TODO: handle error model
     }
 
     private fun emitError(error: Throwable) {

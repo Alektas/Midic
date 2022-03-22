@@ -63,4 +63,6 @@ dependencies {
     implementation(Lib.Dagger.CORE)
     kapt(Lib.Dagger.COMPILER)
 
+    implementation(Lib.Retrofit.CORE)
+
 }

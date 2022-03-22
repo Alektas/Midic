@@ -6,9 +6,12 @@ import alektas.common.data.local.in_memory.term_search_events.TermSearchEventSou
 import alektas.common.domain.Term
 import alektas.common.data.local.in_memory.term_selection.SelectedTermCacheInput
 import alektas.common.data.local.in_memory.term_selection.TermSelection
+import alektas.common.data.remote.constants.HttpErrorCode
 import alektas.term_search.data.remote.RemoteTermSearchSource
 import alektas.term_search.domain.TermSearchRepository
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
 import javax.inject.Inject
 
 /**
@@ -22,26 +25,38 @@ class TermSearchRepositoryImpl @Inject constructor(
     private val searchEvents: TermSearchEventSource,
 ) : TermSearchRepository {
 
-    override suspend fun queryTerms(query: String): List<Term> = with(selectedTermCache) {
+    override suspend fun queryTerms(query: String): Result<List<Term>, Exception> {
         if (query.isBlank()) {
-            emit(Result.Success(TermSelection.Init))
-            return@with emptyList()
+            selectedTermCache.emit(Result.Success(TermSelection.Init))
+            return Result.Empty
         }
 
-        emit(Result.Loading)
+        selectedTermCache.emit(Result.Loading)
         return try {
             remoteSource.queryTerms(query)
-                .also { terms ->
+                .let { terms ->
                     if (terms.isEmpty()) {
-                        emit(Result.Empty)
+                        selectedTermCache.emit(Result.Empty)
+                        Result.Empty
                     } else {
-                        emit(Result.Success(TermSelection.NotSelected))
+                        selectedTermCache.emit(Result.Success(TermSelection.NotSelected))
+                        Result.Success(terms)
                     }
                 }
         } catch (e: Exception) {
-            emit(Result.Error(e))
-            throw e
+            if (e is CancellationException) throw e
+            handleError(e)
         }
+    }
+
+    private fun handleError(e: Exception): Result<List<Term>, Exception> {
+        val result = if (e is HttpException && e.code() == HttpErrorCode.NOT_FOUND) {
+            Result.Empty
+        } else {
+            Result.Error(e)
+        }
+        selectedTermCache.emit(result)
+        return result
     }
 
     override fun selectTerm(term: Term) {
