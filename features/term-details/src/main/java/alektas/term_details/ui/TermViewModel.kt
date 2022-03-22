@@ -11,12 +11,14 @@ import alektas.common.ui.models.DefinitionItem
 import alektas.common.ui.models.TermItem
 import alektas.term_details.domain.TermDetailsInteractor
 import alektas.term_details.ui.models.Action
+import alektas.term_details.ui.models.Event
 import alektas.term_details.ui.models.UiState
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.trySendBlocking
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class TermViewModel @Inject constructor(
@@ -27,6 +29,9 @@ class TermViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Init)
     val uiState: StateFlow<UiState> = _uiState
+
+    private val _events = Channel<Event>(Channel.UNLIMITED)
+    val events: Flow<Event> = _events.receiveAsFlow()
 
     init {
         interactor.observeTerm()
@@ -54,13 +59,25 @@ class TermViewModel @Inject constructor(
             is Action.GetRandomTerm -> interactor.loadRandomTerm()
             is Action.Retry -> interactor.retryTermSearching()
             is Action.Bookmark -> updateBookmark(action.definition)
-            is Action.Copy -> {
-                // TODO()
-            }
+            is Action.Copy -> copyToClipboard(action.definition)
             is Action.Share -> {
                 // TODO()
             }
         }
+    }
+
+    private fun copyToClipboard(definition: DefinitionItem) {
+        val term = (uiState.value as? UiState.Term)?.term ?: return
+        sendEvent(Event.CopyToClipboard(buildDescription(term, definition)))
+    }
+
+    private fun buildDescription(term: TermItem, definitionItem: DefinitionItem): String = with(definitionItem) {
+        """${term.word.capitalize(Locale.current)} [$partOfSpeech]
+            |/${term.transcription}/
+            |
+            |$definition
+            |
+            |"$example"""".trimMargin()
     }
 
     private fun updateBookmark(definitionItem: DefinitionItem) {
@@ -89,6 +106,10 @@ class TermViewModel @Inject constructor(
         launchSafely {
             interactor.deleteFromBookmarks(definition)
         }
+    }
+
+    private fun sendEvent(event: Event) {
+        _events.trySendBlocking(event)
     }
 
 }

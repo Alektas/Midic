@@ -3,17 +3,26 @@ package alektas.term_details.ui
 import alektas.common.ui.models.TermItem
 import alektas.midic.theme.paddingX2
 import alektas.midic.theme.paddingX4
+import alektas.term_details.R
 import alektas.term_details.ui.models.Action
+import alektas.term_details.ui.models.Event
 import alektas.term_details.ui.models.UiState
 import alektas.term_details.ui.views.*
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ClipboardManager
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 
 @Composable
 fun SelectedTermScreen(
@@ -38,6 +47,16 @@ fun SelectedTermScreen(
             modifier = modifier,
             onClick = { viewModel.onAction(it) }
         )
+    }
+
+    val context = LocalContext.current
+    val clipboard = LocalClipboardManager.current
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is Event.CopyToClipboard -> clipboard.copy(context, event.text)
+            }
+        }
     }
 }
 
@@ -67,4 +86,13 @@ private fun TermComponent(
             onClick = onClick
         )
     }
+}
+
+private fun ClipboardManager.copy(context: Context, text: String) {
+    setText(AnnotatedString(text))
+    Toast.makeText(
+        context,
+        context.getString(R.string.hint_definition_is_copied),
+        Toast.LENGTH_SHORT
+    ).show()
 }
