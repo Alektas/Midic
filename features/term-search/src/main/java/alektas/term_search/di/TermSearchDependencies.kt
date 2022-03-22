@@ -1,6 +1,7 @@
 package alektas.term_search.di
 
 import alektas.arch_base.mappers.DuplexMapper
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEventSource
 import alektas.common.data.local.in_memory.term_selection.SelectedTermCacheInput
 import alektas.common.data.remote.owlbot.OwlbotApi
 import alektas.common.domain.Definition
@@ -13,6 +14,8 @@ interface TermSearchDependencies {
     fun owlbotApi(): OwlbotApi
 
     fun selectedTermInput(): SelectedTermCacheInput
+
+    fun termSearchEventSource(): TermSearchEventSource
 
     fun termItemMapper(): DuplexMapper<Term, TermItem>
 

@@ -1,6 +1,7 @@
 package alektas.term_search.domain
 
 import alektas.arch_base.models.Result
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
 import alektas.common.domain.Term
 import alektas.term_search.domain.models.TermSearchError
 import kotlinx.coroutines.flow.Flow
@@ -24,5 +25,7 @@ class TermSearchInteractorImpl @Inject constructor(
     override fun selectTerm(term: Term) {
         repository.selectTerm(term)
     }
+
+    override fun observeSearchEvents(): Flow<TermSearchEvent> = repository.observeSearchEvents()
 
 }

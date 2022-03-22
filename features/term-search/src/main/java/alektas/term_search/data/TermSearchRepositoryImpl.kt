@@ -1,11 +1,14 @@
 package alektas.term_search.data
 
 import alektas.arch_base.models.Result
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEventSource
 import alektas.common.domain.Term
 import alektas.common.data.local.in_memory.term_selection.SelectedTermCacheInput
 import alektas.common.data.local.in_memory.term_selection.TermSelection
 import alektas.term_search.data.remote.RemoteTermSearchSource
 import alektas.term_search.domain.TermSearchRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
@@ -15,10 +18,11 @@ import javax.inject.Inject
  */
 class TermSearchRepositoryImpl @Inject constructor(
     private val remoteSource: RemoteTermSearchSource,
-    private val inMemoryCache: SelectedTermCacheInput,
+    private val selectedTermCache: SelectedTermCacheInput,
+    private val searchEvents: TermSearchEventSource,
 ) : TermSearchRepository {
 
-    override suspend fun queryTerms(query: String): List<Term> = with(inMemoryCache) {
+    override suspend fun queryTerms(query: String): List<Term> = with(selectedTermCache) {
         if (query.isBlank()) {
             emit(Result.Success(TermSelection.Init))
             return@with emptyList()
@@ -41,7 +45,9 @@ class TermSearchRepositoryImpl @Inject constructor(
     }
 
     override fun selectTerm(term: Term) {
-        inMemoryCache.emit(Result.Success(TermSelection.Selected(term)))
+        selectedTermCache.emit(Result.Success(TermSelection.Selected(term)))
     }
+
+    override fun observeSearchEvents(): Flow<TermSearchEvent> = searchEvents.observeTermSearchEvents()
 
 }

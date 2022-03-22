@@ -6,6 +6,8 @@ import alektas.common.data.local.db.dao.BookmarksDao
 import alektas.common.data.local.db.entities.DefinitionEntity
 import alektas.common.data.local.db.entities.TermEntity
 import alektas.common.data.local.db.models.BookmarkTerm
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEventSourceInput
 import alektas.common.data.local.in_memory.term_selection.SelectedTermCache
 import alektas.common.data.local.in_memory.term_selection.TermSelection
 import alektas.common.domain.Bookmark
@@ -17,6 +19,7 @@ import javax.inject.Inject
 
 class TermDetailsRepositoryImpl @Inject constructor(
     private val selectedTermCache: SelectedTermCache,
+    private val termSearchEvents: TermSearchEventSourceInput,
     private val bookmarksDao: BookmarksDao,
     private val bookmarkToTermEntityMapper: Mapper<@JvmSuppressWildcards Bookmark, TermEntity>,
     private val bookmarkToDefinitionEntityMapper: Mapper<@JvmSuppressWildcards Bookmark, DefinitionEntity>,
@@ -63,7 +66,7 @@ class TermDetailsRepositoryImpl @Inject constructor(
     }
 
     override fun retryTermSearching() {
-//        termSearchEvents.emit(TermSearchEvent.Retry)
+        termSearchEvents.emit(TermSearchEvent.Retry)
     }
 
 }

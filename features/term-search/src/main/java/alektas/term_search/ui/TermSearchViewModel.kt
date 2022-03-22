@@ -2,6 +2,7 @@ package alektas.term_search.ui
 
 import alektas.arch_base.mappers.DuplexMapper
 import alektas.arch_base.models.Result
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
 import alektas.common.domain.Term
 import alektas.common.ui.models.TermItem
 import alektas.term_search.domain.TermSearchInteractor
@@ -32,6 +33,7 @@ class TermSearchViewModel @Inject constructor(
     init {
         handleInputUpdate()
         handleSearching()
+        observeSearchEvents()
     }
 
     private fun handleInputUpdate() {
@@ -77,6 +79,18 @@ class TermSearchViewModel @Inject constructor(
             emitError(error)
             emit(ScreenState.NoResults(query))
         }
+
+    private fun observeSearchEvents() {
+        interactor.observeSearchEvents()
+            .onEach { event ->
+                when (event) {
+                    TermSearchEvent.Retry -> {
+                        onAction(ScreenAction.Query(screenState.value.searchQuery))
+                    }
+                }
+            }
+            .launchIn(viewModelScope)
+    }
 
     fun onAction(action: ScreenAction) {
         when (action) {
