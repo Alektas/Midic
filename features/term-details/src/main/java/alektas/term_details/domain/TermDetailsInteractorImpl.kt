@@ -17,4 +17,8 @@ class TermDetailsInteractorImpl @Inject constructor(
 
     override suspend fun deleteFromBookmarks(definition: Definition) = repository.deleteFromBookmarks(definition)
 
+    override fun loadRandomTerm() = repository.loadRandomTerm()
+
+    override fun retryTermSearching() = repository.retryTermSearching()
+
 }

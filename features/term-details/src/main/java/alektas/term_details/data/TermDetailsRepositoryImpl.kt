@@ -55,7 +55,15 @@ class TermDetailsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteFromBookmarks(definition: Definition) {
-        bookmarksDao.deleteDefinition(definition.id)
+        bookmarksDao.deleteDefinition(definition.definition)
+    }
+
+    override fun loadRandomTerm() {
+        // TODO("Not yet implemented")
+    }
+
+    override fun retryTermSearching() {
+//        termSearchEvents.emit(TermSearchEvent.Retry)
     }
 
 }

@@ -14,4 +14,9 @@ interface TermDetailsRepository {
 
     suspend fun deleteFromBookmarks(definition: Definition)
 
+    fun loadRandomTerm()
+
+    fun retryTermSearching()
+
+
 }
