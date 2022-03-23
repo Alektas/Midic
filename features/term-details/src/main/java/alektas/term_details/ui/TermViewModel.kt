@@ -60,15 +60,18 @@ class TermViewModel @Inject constructor(
             is Action.Retry -> interactor.retryTermSearching()
             is Action.Bookmark -> updateBookmark(action.definition)
             is Action.Copy -> copyToClipboard(action.definition)
-            is Action.Share -> {
-                // TODO()
-            }
+            is Action.Share -> shareContent(action.definition)
         }
     }
 
     private fun copyToClipboard(definition: DefinitionItem) {
         val term = (uiState.value as? UiState.Term)?.term ?: return
         sendEvent(Event.CopyToClipboard(buildDescription(term, definition)))
+    }
+
+    private fun shareContent(definition: DefinitionItem) {
+        val term = (uiState.value as? UiState.Term)?.term ?: return
+        sendEvent(Event.Share(buildDescription(term, definition)))
     }
 
     private fun buildDescription(term: TermItem, definitionItem: DefinitionItem): String = with(definitionItem) {

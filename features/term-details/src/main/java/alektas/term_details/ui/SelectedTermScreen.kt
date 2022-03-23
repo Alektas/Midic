@@ -9,6 +9,7 @@ import alektas.term_details.ui.models.Event
 import alektas.term_details.ui.models.UiState
 import alektas.term_details.ui.views.*
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -55,6 +56,7 @@ fun SelectedTermScreen(
         viewModel.events.collect { event ->
             when (event) {
                 is Event.CopyToClipboard -> clipboard.copy(context, event.text)
+                is Event.Share -> shareContent(context, event.text)
             }
         }
     }
@@ -95,4 +97,13 @@ private fun ClipboardManager.copy(context: Context, text: String) {
         context.getString(R.string.hint_definition_is_copied),
         Toast.LENGTH_SHORT
     ).show()
+}
+
+private fun shareContent(context: Context, text: String) {
+    val intent = Intent(Intent.ACTION_SEND).run {
+        putExtra(Intent.EXTRA_TEXT, text)
+        type = "text/plain"
+        Intent.createChooser(this, null)
+    }
+    context.startActivity(intent)
 }
