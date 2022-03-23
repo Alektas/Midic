@@ -7,7 +7,6 @@ import alektas.term_search.ui.views.SearchBar
 import alektas.term_search.ui.views.TermSearchBottomSheetScaffold
 import alektas.ui_components.bottom_sheet.BottomSheetValue
 import alektas.ui_components.bottom_sheet.rememberBottomSheetState
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
@@ -17,14 +16,14 @@ import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterialApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
-fun TermSearchScreen(viewModel: TermSearchViewModel) {
+fun TermSearchScreen(
+    viewModel: TermSearchViewModel,
+    backgroundContent: @Composable (PaddingValues) -> Unit
+) {
     val state by viewModel.screenState.collectAsState()
-    Log.d("TermSearchScreen", "state = $state")
-
     val bottomSheetState = rememberBottomSheetState(initialValue = BottomSheetValue.Hidden)
 
     LaunchedEffect(state) {
-        Log.d("TermSearchScreen", "TermSearchScreen: launch sheet hiding")
         if (state is ScreenState.NoResults) {
             bottomSheetState.hide()
         } else {
@@ -35,7 +34,6 @@ fun TermSearchScreen(viewModel: TermSearchViewModel) {
     val context = LocalContext.current
     LaunchedEffect(Unit) {
         viewModel.screenEvents.collect { event ->
-            Log.d("TermSearchScreen", "event = $event")
             when (event) {
                 ScreenEvent.CollapseSearchResults -> bottomSheetState.collapse()
                 is ScreenEvent.Error -> {
@@ -56,8 +54,8 @@ fun TermSearchScreen(viewModel: TermSearchViewModel) {
             onTermClick = { term ->
                 viewModel.onAction(ScreenAction.TermSelection(term))
             }
-        ) {
-            // background content
+        ) { paddings ->
+            backgroundContent(paddings)
         }
         SearchBar(
             query = state.searchQuery,

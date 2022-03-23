@@ -2,10 +2,10 @@ package alektas.term_search.ui
 
 import alektas.arch_base.mappers.DuplexMapper
 import alektas.arch_base.models.Result
+import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
 import alektas.common.domain.Term
 import alektas.common.ui.models.TermItem
 import alektas.term_search.domain.TermSearchInteractor
-import alektas.term_search.domain.models.TermSearchError
 import alektas.term_search.ui.models.ScreenAction
 import alektas.term_search.ui.models.ScreenEvent
 import alektas.term_search.ui.models.ScreenState
@@ -32,6 +32,7 @@ class TermSearchViewModel @Inject constructor(
     init {
         handleInputUpdate()
         handleSearching()
+        observeSearchEvents()
     }
 
     private fun handleInputUpdate() {
@@ -57,6 +58,9 @@ class TermSearchViewModel @Inject constructor(
     private suspend fun handleQuery(query: String): Flow<ScreenState> = interactor.loadTerms(query)
         .map { result ->
             when (result) {
+                is Result.Loading -> {
+                    ScreenState.Loading(query)
+                }
                 is Result.Empty -> {
                     ScreenState.NoResults(query)
                 }
@@ -74,9 +78,18 @@ class TermSearchViewModel @Inject constructor(
             emitError(error)
             emit(ScreenState.NoResults(query))
         }
-        .onStart {
-            emit(ScreenState.Loading(query))
-        }
+
+    private fun observeSearchEvents() {
+        interactor.observeSearchEvents()
+            .onEach { event ->
+                when (event) {
+                    TermSearchEvent.Retry -> {
+                        onAction(ScreenAction.Query(screenState.value.searchQuery))
+                    }
+                }
+            }
+            .launchIn(viewModelScope)
+    }
 
     fun onAction(action: ScreenAction) {
         when (action) {
@@ -88,10 +101,6 @@ class TermSearchViewModel @Inject constructor(
     private fun handleTermSelection(termItem: TermItem) {
         emitEvent(ScreenEvent.CollapseSearchResults)
         interactor.selectTerm(termMapper.mapOutput(termItem))
-    }
-
-    private fun emitError(error: TermSearchError) {
-        emitEvent(ScreenEvent.Error(error.toString())) // TODO: handle error model
     }
 
     private fun emitError(error: Throwable) {

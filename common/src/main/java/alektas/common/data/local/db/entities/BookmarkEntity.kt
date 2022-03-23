@@ -1,5 +1,7 @@
 package alektas.common.data.local.db.entities
 
+import alektas.common.data.local.db.entities.BookmarkEntity.Companion.DB_COLUMN_BOOKMARKS_DEFINITION
+import alektas.common.data.local.db.entities.BookmarkEntity.Companion.DB_COLUMN_BOOKMARKS_TERM_WORD
 import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
 
@@ -9,31 +11,36 @@ import androidx.room.ForeignKey.CASCADE
         ForeignKey(
             entity = TermEntity::class,
             parentColumns = [TermEntity.DB_COLUMN_TERMS_WORD],
-            childColumns = ["term_word"],
+            childColumns = [DB_COLUMN_BOOKMARKS_TERM_WORD],
             onDelete = CASCADE,
             onUpdate = CASCADE,
         ),
         ForeignKey(
             entity = DefinitionEntity::class,
-            parentColumns = [DefinitionEntity.DB_COLUMN_DEFINITIONS_ID],
-            childColumns = ["definition_id"],
+            parentColumns = [DefinitionEntity.DB_COLUMN_DEFINITIONS_DEFINITION],
+            childColumns = [DB_COLUMN_BOOKMARKS_DEFINITION],
             onDelete = CASCADE,
             onUpdate = CASCADE,
         )
+    ],
+    primaryKeys = [
+        DB_COLUMN_BOOKMARKS_TERM_WORD,
+        DB_COLUMN_BOOKMARKS_DEFINITION,
+    ],
+    indices = [
+        Index(DB_COLUMN_BOOKMARKS_DEFINITION)
     ]
 )
 data class BookmarkEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = -1L,
     @ColumnInfo(name = DB_COLUMN_BOOKMARKS_TERM_WORD)
     val termWord: String,
-    @ColumnInfo(name = DB_COLUMN_BOOKMARKS_DEFINITION_ID)
-    val definitionId: Long,
+    @ColumnInfo(name = DB_COLUMN_BOOKMARKS_DEFINITION)
+    val definition: String,
 ) {
 
     companion object {
 
         const val DB_COLUMN_BOOKMARKS_TERM_WORD = "term_word"
-        const val DB_COLUMN_BOOKMARKS_DEFINITION_ID = "definition_id"
+        const val DB_COLUMN_BOOKMARKS_DEFINITION = "definition"
     }
 }

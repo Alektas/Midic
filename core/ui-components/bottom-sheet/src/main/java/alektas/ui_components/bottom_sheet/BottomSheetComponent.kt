@@ -235,7 +235,12 @@ fun BottomSheetScaffold( // TODO: add ability to disable user scrolling to Hidde
                     contentColor = contentColor
                 ) {
                     Column(Modifier.fillMaxSize()) {
-                        content(PaddingValues(bottom = 0.dp))
+                        val contentPadding = if (bottomSheetState.currentValue == BottomSheetValue.Hidden) {
+                            0.dp
+                        } else {
+                            sheetPeekHeight
+                        }
+                        content(PaddingValues(bottom = contentPadding))
                     }
                 }
             },

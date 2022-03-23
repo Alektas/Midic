@@ -15,8 +15,8 @@ data class BookmarkTerm(
     )
     val term: TermEntity,
     @Relation(
-        parentColumn = BookmarkEntity.DB_COLUMN_BOOKMARKS_DEFINITION_ID,
-        entityColumn = DefinitionEntity.DB_COLUMN_DEFINITIONS_ID
+        parentColumn = BookmarkEntity.DB_COLUMN_BOOKMARKS_DEFINITION,
+        entityColumn = DefinitionEntity.DB_COLUMN_DEFINITIONS_DEFINITION
     )
     val definitions: List<DefinitionEntity>
 )
