@@ -12,4 +12,5 @@ include(
     ":common",
     ":features:term-search",
     ":features:term-details",
+    ":features:bookmark-list",
 )

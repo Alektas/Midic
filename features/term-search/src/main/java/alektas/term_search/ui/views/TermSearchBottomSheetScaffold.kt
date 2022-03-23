@@ -65,7 +65,7 @@ private fun BottomSheetContent(
     ) {
         when (bottomSheetContentState) {
             is ScreenState.Loading -> {
-                items(6) {
+                items(1) {
                     ShimmingTermCard()
                     Spacer(modifier = Modifier.size(paddingX2))
                 }
