@@ -126,7 +126,6 @@ fun TermCardDarkPreview() {
 }
 
 private fun getPreviewItem(definitions: List<DefinitionItem> = listOf()) = TermItem(
-    id = 0L,
     word = "Word",
     transcription = "/word/",
     definitions = definitions

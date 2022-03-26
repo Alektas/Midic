@@ -13,7 +13,6 @@ class TermItemMapper @Inject constructor(
 
     override fun mapInput(input: Term): TermItem = with(input) {
         TermItem(
-            id = id,
             word = word,
             transcription = transcription,
             definitions = definitions.map { definitionMapper.mapInput(it) },
@@ -22,7 +21,6 @@ class TermItemMapper @Inject constructor(
 
     override fun mapOutput(output: TermItem): Term = with(output) {
         Term(
-            id = id,
             word = word,
             transcription = transcription,
             definitions = definitions.map { definitionMapper.mapOutput(it) }

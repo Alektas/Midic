@@ -13,7 +13,6 @@ class OwlbotTermMapper @Inject constructor(
 
     override fun map(input: OwlbotTermDto): Term = with(input) {
         Term(
-            id = input.hashCode().toLong(),
             word = word,
             transcription = pronunciation ?: "",
             definitions = definitions.map(definitionMapper::map)

@@ -9,7 +9,6 @@ class OwlbotDefinitionMapper @Inject constructor() : Mapper<OwlbotDefinitionDto,
 
     override fun map(input: OwlbotDefinitionDto): Definition = with(input) {
         Definition(
-            id = input.hashCode().toLong(),
             partOfSpeech = type,
             definition = definition,
             example = example,

@@ -1,5 +1,6 @@
 package alektas.midic.di
 
+import alektas.bookmark_list.di.BookmarkListDependencies
 import alektas.core.di.qualifiers.ApplicationContext
 import alektas.term_search.di.TermSearchDependencies
 import alektas.term_details.di.TermDetailsDependencies
@@ -10,7 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AppModule::class])
-interface AppComponent : TermSearchDependencies, TermDetailsDependencies {
+interface AppComponent : TermSearchDependencies, TermDetailsDependencies, BookmarkListDependencies {
 
     @Component.Factory
     interface Factory {
