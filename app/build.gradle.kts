@@ -94,6 +94,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":features:term-search"))
     implementation(project(":features:term-details"))
+    implementation(project(":features:bookmark-list"))
 
     implementation(Lib.Kotlin.STDLIB)
     implementation(Lib.Kotlin.COROUTINES)

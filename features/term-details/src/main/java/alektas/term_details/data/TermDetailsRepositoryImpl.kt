@@ -5,7 +5,7 @@ import alektas.arch_base.models.Result
 import alektas.common.data.local.db.dao.BookmarksDao
 import alektas.common.data.local.db.entities.DefinitionEntity
 import alektas.common.data.local.db.entities.TermEntity
-import alektas.common.data.local.db.models.BookmarkTerm
+import alektas.common.data.local.db.models.BookmarkExtended
 import alektas.common.data.local.in_memory.term_search_events.TermSearchEvent
 import alektas.common.data.local.in_memory.term_search_events.TermSearchEventSourceInput
 import alektas.common.data.local.in_memory.term_selection.SelectedTermCache
@@ -38,7 +38,7 @@ class TermDetailsRepositoryImpl @Inject constructor(
             }
     }
 
-    private fun Term.checkInBookmarks(bookmarks: List<BookmarkTerm>): Term {
+    private fun Term.checkInBookmarks(bookmarks: List<BookmarkExtended>): Term {
         val bookmarkDefinitions = bookmarks
             .filter { it.term.word == word }
             .flatMap { it.definitions }

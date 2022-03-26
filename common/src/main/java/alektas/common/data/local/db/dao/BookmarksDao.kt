@@ -3,7 +3,7 @@ package alektas.common.data.local.db.dao
 import alektas.common.data.local.db.entities.BookmarkEntity
 import alektas.common.data.local.db.entities.DefinitionEntity
 import alektas.common.data.local.db.entities.TermEntity
-import alektas.common.data.local.db.models.BookmarkTerm
+import alektas.common.data.local.db.models.BookmarkExtended
 import androidx.room.*
 import androidx.room.OnConflictStrategy.*
 import kotlinx.coroutines.flow.Flow
@@ -26,8 +26,8 @@ abstract class BookmarksDao {
     abstract suspend fun deleteDefinition(definition: String)
 
     @Transaction
-    @Query("SELECT * FROM bookmarks")
-    abstract fun observeBookmarks(): Flow<List<BookmarkTerm>>
+    @Query("SELECT * FROM terms")
+    abstract fun observeBookmarks(): Flow<List<BookmarkExtended>>
 
     @Insert(onConflict = REPLACE)
     protected abstract suspend fun saveBookmark(bookmark: BookmarkEntity)
