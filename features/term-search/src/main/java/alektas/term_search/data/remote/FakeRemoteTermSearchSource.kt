@@ -11,12 +11,11 @@ class FakeRemoteTermSearchSource @Inject constructor(): RemoteTermSearchSource {
         delay(1_000)
         repeat(50) {
             val item = Term(
-                id = it.toLong(),
                 word = "$query $it",
                 transcription = "/$query $it/",
                 definitions = buildList {
                     repeat(it) {
-                        add(Definition(it.toLong(), "noun", "Definition", inBookmarks = false))
+                        add(Definition("noun", "Definition", inBookmarks = false))
                     }
                 }
             )

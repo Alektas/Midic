@@ -91,7 +91,7 @@ fun BookmarkListLightPreview() {
         BookmarkList(
             state = UiState.Bookmarks(buildList {
                 repeat(10) {
-                    add(TermItem(0L, "Word $it", "/$it/", listOf()))
+                    add(TermItem("Word $it", "/$it/", listOf()))
                 }
             }),
         ) { }
@@ -106,7 +106,7 @@ fun BookmarkListDarkPreview() {
         BookmarkList(
             state = UiState.Bookmarks(buildList {
                 repeat(10) {
-                    add(TermItem(0L, "Word $it", "/$it/", listOf()))
+                    add(TermItem("Word $it", "/$it/", listOf()))
                 }
             }),
             onTermClick = {}

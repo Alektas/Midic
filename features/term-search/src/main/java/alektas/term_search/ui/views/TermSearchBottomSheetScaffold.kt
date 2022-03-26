@@ -109,7 +109,7 @@ fun TermSearchBottomSheetLightPreview() {
         TermSearchBottomSheetScaffold(
             bottomSheetContentState = ScreenState.Results("Word", buildList {
                 repeat(10) {
-                    add(TermItem(0L, "Word $it", "/$it/", listOf()))
+                    add(TermItem("Word $it", "/$it/", listOf()))
                 }
             }),
             bottomSheetState = BottomSheetState(initialValue = BottomSheetValue.SemiExpanded),
@@ -126,7 +126,7 @@ fun TermSearchBottomSheetDarkPreview() {
         TermSearchBottomSheetScaffold(
             bottomSheetContentState = ScreenState.Results("Word", buildList {
                 repeat(10) {
-                    add(TermItem(0L, "Word $it", "/$it/", listOf()))
+                    add(TermItem("Word $it", "/$it/", listOf()))
                 }
             }),
             bottomSheetState = BottomSheetState(initialValue = BottomSheetValue.SemiExpanded),

@@ -9,7 +9,6 @@ class DefinitionItemMapper @Inject constructor() : DuplexMapper<Definition, Defi
 
     override fun mapInput(input: Definition): DefinitionItem = with(input) {
         DefinitionItem(
-            id = id,
             partOfSpeech = partOfSpeech,
             definition = definition,
             inBookmarks = inBookmarks,
@@ -20,7 +19,6 @@ class DefinitionItemMapper @Inject constructor() : DuplexMapper<Definition, Defi
 
     override fun mapOutput(output: DefinitionItem): Definition = with(output) {
         Definition(
-            id = id,
             partOfSpeech = partOfSpeech,
             definition = definition,
             inBookmarks = inBookmarks,
