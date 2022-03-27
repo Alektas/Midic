@@ -38,7 +38,6 @@ fun TermSearchBottomSheetScaffold(
         content = content,
         sheetShape = RoundedCornerShape(topStart = cornersX6, topEnd = cornersX6),
         bottomSheetState = bottomSheetState,
-        sheetBackgroundColor = MaterialTheme.colorScheme.surfaceVariant,
         sheetElevation = 0.dp,
         sheetPeekHeight = badgeHeight + paddingX2 * 2,
         sheetContent = {

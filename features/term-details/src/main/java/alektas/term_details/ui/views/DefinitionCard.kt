@@ -5,10 +5,10 @@ import alektas.common.ui.utils.generateDefinitionItem
 import alektas.midic.theme.*
 import alektas.term_details.R
 import alektas.term_details.ui.models.Action
+import alektas.ui_components.card.BaseCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -32,11 +33,7 @@ fun DefinitionCard(
     imagePainter: Painter = painterResource(id = R.drawable.ic_term_image_placeholder),
     onClick: (Action) -> Unit
 ) = with(item) {
-    Card(
-        shape = RoundedCornerShape(cornersX4),
-        elevation = cardElevation,
-        modifier = modifier
-    ) {
+    BaseCard(modifier = modifier) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Column {
                 Spacer(Modifier.height(paddingX4))
@@ -52,6 +49,7 @@ fun DefinitionCard(
                 Text(
                     text = "[$partOfSpeech]",
                     style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -71,6 +69,7 @@ fun DefinitionCard(
                     Text(
                         text = "\"$example\"",
                         style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -96,17 +95,19 @@ private fun ButtonPanel(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        IconButton(onClick = { onClick(Action.Share(definition)) }) {
-            Icon(Icons.Outlined.Share, stringResource(R.string.descr_definition_share))
-        }
-        IconButton(onClick = { onClick(Action.Copy(definition)) }) {
-            Icon(Icons.Outlined.ContentCopy, stringResource(R.string.descr_definition_copy))
-        }
-        IconButton(onClick = { onClick(Action.Bookmark(definition)) }) {
-            Icon(
-                if (definition.inBookmarks) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
-                stringResource(R.string.descr_save_to_bookmarks)
-            )
+        CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.outline) {
+            IconButton(onClick = { onClick(Action.Share(definition)) }) {
+                Icon(Icons.Outlined.Share, stringResource(R.string.descr_definition_share))
+            }
+            IconButton(onClick = { onClick(Action.Copy(definition)) }) {
+                Icon(Icons.Outlined.ContentCopy, stringResource(R.string.descr_definition_copy))
+            }
+            IconButton(onClick = { onClick(Action.Bookmark(definition)) }) {
+                Icon(
+                    if (definition.inBookmarks) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,
+                    stringResource(R.string.descr_save_to_bookmarks)
+                )
+            }
         }
     }
 }

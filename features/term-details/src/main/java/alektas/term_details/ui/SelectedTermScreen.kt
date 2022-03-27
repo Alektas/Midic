@@ -78,10 +78,13 @@ private fun TermComponent(
             text = term.word,
             style = MaterialTheme.typography.displaySmall
         )
-        Text(
-            text = "/${term.transcription}/",
-            style = MaterialTheme.typography.titleMedium
-        )
+        if (term.transcription.isNotBlank()) {
+            Text(
+                text = "/${term.transcription}/",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+        }
         Spacer(modifier = Modifier.height(paddingX4))
         DefinitionsCarousel(
             definitions = term.definitions,
