@@ -12,6 +12,7 @@ import alektas.common.ui.utils.rememberPrimaryImagePainter
 import alektas.midic.theme.AppTheme
 import alektas.midic.theme.paddingX2
 import alektas.midic.theme.paddingX4
+import alektas.ui_components.app_bar.TopAppBar
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun BookmarkListScreen(
     viewModel: BookmarkListViewModel,
+    onBackButtonClick: () -> Unit,
 ) {
     LaunchedEffect(Unit) {
         viewModel.screenEvents.collect { event ->
@@ -36,11 +38,14 @@ fun BookmarkListScreen(
         }
     }
 
-    val state by viewModel.screenState.collectAsState()
-    BookmarkList(
-        state = state,
-        onTermClick = { viewModel.onAction(Action.TermSelection(it)) }
-    )
+    Column {
+        TopAppBar(backBtnCallback = onBackButtonClick)
+        val state by viewModel.screenState.collectAsState()
+        BookmarkList(
+            state = state,
+            onTermClick = { viewModel.onAction(Action.TermSelection(it)) }
+        )
+    }
 }
 
 @Composable
