@@ -60,11 +60,14 @@ fun TermCard(
             )
         },
         secondLine = {
-            Text(
-                text = term.transcription,
-                maxLines = 1,
-                style = MaterialTheme.typography.labelMedium,
-            )
+            if (term.transcription.isNotBlank()) {
+                Text(
+                    text = "/${term.transcription}/",
+                    maxLines = 1,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+            }
         },
         thirdLine = definitionsCount?.let {
             {
@@ -72,6 +75,7 @@ fun TermCard(
                     text = definitionsCount,
                     maxLines = 1,
                     style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             }
         },

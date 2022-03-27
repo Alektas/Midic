@@ -26,7 +26,6 @@ fun SearchBar(
 ) {
     Surface(
         modifier = modifier.requiredHeight(48.dp),
-        color = MaterialTheme.colorScheme.surfaceVariant
     ) {
         Row(
             modifier = Modifier.padding(start = paddingX4, end = paddingX1),
@@ -38,6 +37,9 @@ fun SearchBar(
                     onQueryChanged(it)
                 },
                 singleLine = true,
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    color = MaterialTheme.colorScheme.onBackground
+                ),
                 decorationBox = { input ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
@@ -46,7 +48,7 @@ fun SearchBar(
                         )
                         Spacer(modifier = Modifier.size(paddingX2))
                         if (query.isEmpty()) {
-                            Text(hint)
+                            Text(hint, color = MaterialTheme.colorScheme.onSurface)
                         } else {
                             input()
                         }
@@ -74,7 +76,7 @@ fun SearchBar(
 @Composable
 fun SearchBarPreview() {
     AppTheme(useDarkTheme = false) {
-        SearchBar { }
+        SearchBar(query = "Search query") { }
     }
 }
 
@@ -82,6 +84,6 @@ fun SearchBarPreview() {
 @Composable
 fun SearchBarDarkPreview() {
     AppTheme(useDarkTheme = true) {
-        SearchBar { }
+        SearchBar(query = "Search query") { }
     }
 }

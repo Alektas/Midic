@@ -20,7 +20,7 @@ fun BaseCard(
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(corner = CornerSize(cornersX4)),
-        backgroundColor = MaterialTheme.colorScheme.surface,
+        backgroundColor = MaterialTheme.colorScheme.surfaceVariant,
         elevation = cardElevation,
         onClick = onClick,
         content = content
