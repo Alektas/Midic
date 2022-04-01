@@ -73,6 +73,7 @@ fun TermSearchScreen(
         SearchBar(
             query = state.searchQuery,
             hint = stringResource(id = R.string.hint_term_search),
+            onKeyboardDoneClick = { focusManager.clearFocus() },
             onQueryChanged = { query ->
                 viewModel.onAction(ScreenAction.Query(query))
             }
