@@ -17,6 +17,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 
@@ -39,10 +40,14 @@ fun TermSearchScreen(
     }
 
     val context = LocalContext.current
+    val focusManager = LocalFocusManager.current
     LaunchedEffect(Unit) {
         viewModel.screenEvents.collect { event ->
             when (event) {
-                ScreenEvent.CollapseSearchResults -> bottomSheetState.collapse()
+                is ScreenEvent.CollapseSearchResults -> {
+                    bottomSheetState.collapse()
+                    focusManager.clearFocus()
+                }
                 is ScreenEvent.Error -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_LONG).show() // TODO
                 }
@@ -68,6 +73,7 @@ fun TermSearchScreen(
         SearchBar(
             query = state.searchQuery,
             hint = stringResource(id = R.string.hint_term_search),
+            onKeyboardDoneClick = { focusManager.clearFocus() },
             onQueryChanged = { query ->
                 viewModel.onAction(ScreenAction.Query(query))
             }
