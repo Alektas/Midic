@@ -40,7 +40,11 @@ object Lib {
         const val ANIMATION = "androidx.compose.animation:animation"
         const val TOOLING = "androidx.compose.ui:ui-tooling"
         const val NAVIGATION = "androidx.navigation:navigation-compose"
-        const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager"
+
+        object Accompanist {
+            const val PAGER = "com.google.accompanist:accompanist-pager"
+            const val SYSTEM_UI = "com.google.accompanist:accompanist-systemuicontroller"
+        }
     }
     object ImageLoading {
         const val COIL = "io.coil-kt:coil-compose"
