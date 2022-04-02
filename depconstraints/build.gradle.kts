@@ -18,7 +18,7 @@ val compose = Config.COMPOSE
 val composeMaterial3 = "1.0.0-alpha03"
 val composeActivity = "1.4.0"
 val composeViewModel = "2.4.0"
-val accompanist = "0.22.0-rc"
+val accompanist = "0.24.5-alpha"
 val coil = "1.4.0"
 val material = "1.5.0"
 val dagger = "2.40.5"
@@ -62,7 +62,8 @@ dependencies {
         api("${Lib.Compose.ANIMATION}:$compose")
         api("${Lib.Compose.TOOLING}:$compose")
         api("${Lib.Compose.NAVIGATION}:$navigation")
-        api("${Lib.Compose.ACCOMPANIST_PAGER}:$accompanist")
+        api("${Lib.Compose.Accompanist.PAGER}:$accompanist")
+        api("${Lib.Compose.Accompanist.SYSTEM_UI}:$accompanist")
         api("${Lib.ImageLoading.COIL}:$coil")
         api("${Lib.Test.ARCH_CORE}:$archCoreTesting")
         api("${Lib.Test.RUNNER}:$testRunner")

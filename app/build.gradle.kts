@@ -106,7 +106,8 @@ dependencies {
     implementation(Lib.Common.LIFECYCLE_VIEW_MODEL_KTX)
     implementation(Lib.Common.MATERIAL)
 
-    implementation(Lib.Compose.ACCOMPANIST_PAGER)
+    implementation(Lib.Compose.Accompanist.PAGER)
+    implementation(Lib.Compose.Accompanist.SYSTEM_UI)
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.ANIMATION)
     implementation(Lib.Compose.MATERIAL3)
