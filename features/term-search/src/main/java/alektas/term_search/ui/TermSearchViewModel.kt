@@ -21,7 +21,7 @@ class TermSearchViewModel @Inject constructor(
     private val termMapper: DuplexMapper<Term, TermItem>,
 ) : ViewModel() {
 
-    private val _query = MutableSharedFlow<String>(extraBufferCapacity = Int.MAX_VALUE)
+    private val _query = MutableStateFlow("")
 
     private val _screenState = MutableStateFlow<ScreenState>(ScreenState.NoResults(""))
     val screenState: StateFlow<ScreenState> = _screenState
@@ -38,7 +38,7 @@ class TermSearchViewModel @Inject constructor(
     private fun handleInputUpdate() {
         _query
             .onEach { query ->
-                _screenState.value = screenState.value.withQuery(query)
+                _screenState.update { it.withQuery(query) }
             }
             .launchIn(viewModelScope)
     }
@@ -57,20 +57,21 @@ class TermSearchViewModel @Inject constructor(
 
     private suspend fun handleQuery(query: String): Flow<ScreenState> = interactor.loadTerms(query)
         .map { result ->
+            val newestQuery = screenState.value.searchQuery // can be newer than 'query' because of debouncing
             when (result) {
                 is Result.Loading -> {
-                    ScreenState.Loading(query)
+                    ScreenState.Loading(newestQuery)
                 }
                 is Result.Empty -> {
-                    ScreenState.NoResults(query)
+                    ScreenState.NoResults(newestQuery)
                 }
                 is Result.Error -> {
                     emitError(result.data)
-                    ScreenState.NoResults(query)
+                    ScreenState.NoResults(newestQuery)
                 }
                 is Result.Success -> {
                     val termItems = result.data.map { termMapper.mapInput(it) }
-                    ScreenState.Results(query, termItems)
+                    ScreenState.Results(newestQuery, termItems)
                 }
             }
         }
