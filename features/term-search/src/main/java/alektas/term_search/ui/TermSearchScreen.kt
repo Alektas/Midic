@@ -45,8 +45,12 @@ fun TermSearchScreen(
         viewModel.screenEvents.collect { event ->
             when (event) {
                 is ScreenEvent.CollapseSearchResults -> {
-                    bottomSheetState.collapse()
                     focusManager.clearFocus()
+                    try {
+                        bottomSheetState.collapse()
+                    } catch (e: Exception) {
+                        e.printStackTrace() // workaround, 'collapse' throws CancellationException if some view has focus
+                    }
                 }
                 is ScreenEvent.Error -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_LONG).show() // TODO
