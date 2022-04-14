@@ -7,21 +7,9 @@ plugins {
     kotlin("kapt")
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-
 android {
     compileSdk = Config.COMPILE_SDK
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as? String
-            keyAlias = keystoreProperties["keyAlias"] as? String
-            keyPassword = keystoreProperties["keyPassword"] as? String
-        }
-    }
     defaultConfig {
         applicationId = "alektas.midic"
         minSdk = Config.MIN_SDK
@@ -30,7 +18,7 @@ android {
         versionName = Config.versionName
 
         base.archivesName.set("Midic-${versionName}")
-        signingConfig = signingConfigs.getByName("release")
+        signingConfig = signingConfigs.getByName("debug")
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
         val apiPropertiesFile = rootProject.file("remote_api.properties")
@@ -114,6 +102,7 @@ dependencies {
     implementation(Lib.Compose.ACTIVITY)
     implementation(Lib.Compose.VIEW_MODEL)
     implementation(Lib.Compose.NAVIGATION)
+    implementation(Lib.Compose.TOOLING_PREVIEW)
     debugImplementation(Lib.Compose.TOOLING)
 
     implementation(Lib.Dagger.CORE)

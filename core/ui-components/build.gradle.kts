@@ -48,5 +48,6 @@ dependencies {
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.MATERIAL2)
     implementation(Lib.Compose.MATERIAL3)
+    implementation(Lib.Compose.TOOLING_PREVIEW)
     debugImplementation(Lib.Compose.TOOLING)
 }

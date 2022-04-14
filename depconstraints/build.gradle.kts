@@ -61,6 +61,7 @@ dependencies {
         api("${Lib.Compose.RUNTIME}:$compose")
         api("${Lib.Compose.ANIMATION}:$compose")
         api("${Lib.Compose.TOOLING}:$compose")
+        api("${Lib.Compose.TOOLING_PREVIEW}:$compose")
         api("${Lib.Compose.NAVIGATION}:$navigation")
         api("${Lib.Compose.Accompanist.PAGER}:$accompanist")
         api("${Lib.Compose.Accompanist.SYSTEM_UI}:$accompanist")

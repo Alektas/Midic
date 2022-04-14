@@ -39,6 +39,7 @@ object Lib {
         const val RUNTIME = "androidx.compose.runtime:runtime"
         const val ANIMATION = "androidx.compose.animation:animation"
         const val TOOLING = "androidx.compose.ui:ui-tooling"
+        const val TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview"
         const val NAVIGATION = "androidx.navigation:navigation-compose"
 
         object Accompanist {
