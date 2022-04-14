@@ -114,6 +114,7 @@ dependencies {
     implementation(Lib.Compose.ACTIVITY)
     implementation(Lib.Compose.VIEW_MODEL)
     implementation(Lib.Compose.NAVIGATION)
+    implementation(Lib.Compose.TOOLING_PREVIEW)
     debugImplementation(Lib.Compose.TOOLING)
 
     implementation(Lib.Dagger.CORE)
