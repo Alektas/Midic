@@ -22,14 +22,8 @@ jobs:
       - name: Assemble staging APK
         run: ./gradlew --build-cache assembleDebug # TODO: replace `assembleDebug` by `assembleStaging`
 
-  upload-staging:
-    runs-on: ubuntu-latest
-    needs: assemble-staging
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/android-workflow-preparation
-      - run: echo ls
       - name: Upload staging APK
         uses: actions/upload-artifact@v2
         with:
-          path: ${{ github.workspace }}/app/build/outputs/apk/debug/*.apk # TODO: replace `.../debug/...` by `.../staging/...`
+          name: app-debug.apk
+          path: app/build/outputs/apk/debug/*.apk # TODO: replace `.../debug/...` by `.../staging/...`
