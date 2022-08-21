@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="descr_btn_term_details">Term details</string>
+    <string name="descr_btn_bookmarks">Navigate to bookmarks</string>
+    <plurals name="plural_term_definitions_count">
+        <item quantity="zero">%1$d definitions</item>
+        <item quantity="one">%1$d definition</item>
+        <item quantity="few">%1$d definitions</item>
+        <item quantity="many">%1$d definitions</item>
+        <item quantity="other">%1$d definitions</item>
+    </plurals>
+</resources>

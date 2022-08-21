@@ -5,6 +5,7 @@ object Lib {
         const val CORE_KTX = "androidx.core:core-ktx"
         const val LIFECYCLE_VIEW_MODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx"
         const val MATERIAL = "com.google.android.material:material"
+        const val INJECT = "javax.inject:javax.inject"
     }
     object Kotlin {
         const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
@@ -32,12 +33,22 @@ object Lib {
     object Compose {
         const val ACTIVITY = "androidx.activity:activity-compose"
         const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-compose"
+        const val MATERIAL2 = "androidx.compose.material:material"
         const val MATERIAL3 = "androidx.compose.material3:material3"
+        const val MATERIAL_ICONS = "androidx.compose.material:material-icons-extended"
         const val RUNTIME = "androidx.compose.runtime:runtime"
         const val ANIMATION = "androidx.compose.animation:animation"
         const val TOOLING = "androidx.compose.ui:ui-tooling"
+        const val TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview"
         const val NAVIGATION = "androidx.navigation:navigation-compose"
-        const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager"
+
+        object Accompanist {
+            const val PAGER = "com.google.accompanist:accompanist-pager"
+            const val SYSTEM_UI = "com.google.accompanist:accompanist-systemuicontroller"
+        }
+    }
+    object ImageLoading {
+        const val COIL = "io.coil-kt:coil-compose"
     }
     object Test {
         const val ARCH_CORE = "android.arch.core:core-testing"

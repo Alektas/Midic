@@ -7,21 +7,9 @@ plugins {
     kotlin("kapt")
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-
 android {
     compileSdk = Config.COMPILE_SDK
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as? String
-            keyAlias = keystoreProperties["keyAlias"] as? String
-            keyPassword = keystoreProperties["keyPassword"] as? String
-        }
-    }
     defaultConfig {
         applicationId = "alektas.midic"
         minSdk = Config.MIN_SDK
@@ -30,8 +18,14 @@ android {
         versionName = Config.versionName
 
         base.archivesName.set("Midic-${versionName}")
-        signingConfig = signingConfigs.getByName("release")
+        signingConfig = signingConfigs.getByName("debug")
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+        val apiPropertiesFile = rootProject.file("remote_api.properties")
+        val apiProperties = Properties().apply {
+            load(FileInputStream(apiPropertiesFile))
+        }
+        buildConfigField("String", "OWLBOT_API_TOKEN", apiProperties["apiToken.owlbot"] as String)
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -80,6 +74,15 @@ dependencies {
     androidTestApi(platform(project(":depconstraints")))
 
     implementation(project(":core:theme"))
+    implementation(project(":core:di"))
+    implementation(project(":core:ui-components"))
+    implementation(project(":core:ui-components:bottom-sheet"))
+    implementation(project(":core:utils:compose"))
+    implementation(project(":core:utils:arch-base"))
+    implementation(project(":common"))
+    implementation(project(":features:term-search"))
+    implementation(project(":features:term-details"))
+    implementation(project(":features:bookmark-list"))
 
     implementation(Lib.Kotlin.STDLIB)
     implementation(Lib.Kotlin.COROUTINES)
@@ -91,13 +94,15 @@ dependencies {
     implementation(Lib.Common.LIFECYCLE_VIEW_MODEL_KTX)
     implementation(Lib.Common.MATERIAL)
 
-    implementation(Lib.Compose.ACCOMPANIST_PAGER)
+    implementation(Lib.Compose.Accompanist.PAGER)
+    implementation(Lib.Compose.Accompanist.SYSTEM_UI)
     implementation(Lib.Compose.RUNTIME)
     implementation(Lib.Compose.ANIMATION)
     implementation(Lib.Compose.MATERIAL3)
     implementation(Lib.Compose.ACTIVITY)
     implementation(Lib.Compose.VIEW_MODEL)
     implementation(Lib.Compose.NAVIGATION)
+    implementation(Lib.Compose.TOOLING_PREVIEW)
     debugImplementation(Lib.Compose.TOOLING)
 
     implementation(Lib.Dagger.CORE)

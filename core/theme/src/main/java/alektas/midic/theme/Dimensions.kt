@@ -2,51 +2,33 @@ package alektas.midic.theme
 
 import androidx.compose.ui.unit.dp
 
-val paddingHorizontalXs = 8.dp
-val paddingHorizontalS = 12.dp
-val paddingHorizontalM = 16.dp
-val paddingHorizontalL = 20.dp
-val paddingHorizontalXl = 24.dp
-val paddingHorizontalXxl = 28.dp
-val paddingHorizontalXxxl = 32.dp
+private val baseDimension = 4.dp
 
-val paddingVerticalXs = 8.dp
-val paddingVerticalS = 12.dp
-val paddingVerticalM = 16.dp
-val paddingVerticalL = 20.dp
-val paddingVerticalXl = 24.dp
-val paddingVerticalXxl = 28.dp
-val paddingVerticalXxxl = 32.dp
+val paddingX1 = baseDimension
+val paddingX2 = baseDimension * 2
+val paddingX3 = baseDimension * 3
+val paddingX4 = baseDimension * 4
+val paddingX5 = baseDimension * 5
+val paddingX6 = baseDimension * 6
+val paddingX7 = baseDimension * 7
+val paddingX8 = baseDimension * 8
 
-val spacingHorizontalXs = 8.dp
-val spacingHorizontalS = 12.dp
-val spacingHorizontalM = 16.dp
-val spacingHorizontalL = 20.dp
-val spacingHorizontalXl = 24.dp
-val spacingHorizontalXxl = 28.dp
-val spacingHorizontalXxxl = 32.dp
+val cornersX1 = baseDimension
+val cornersX2 = baseDimension * 2
+val cornersX3 = baseDimension * 3
+val cornersX4 = baseDimension * 4
+val cornersX5 = baseDimension * 5
+val cornersX6 = baseDimension * 6
+val cornersX7 = baseDimension * 7
+val cornersX8 = baseDimension * 8
 
-val spacingVerticalXxs = 4.dp
-val spacingVerticalXs = 8.dp
-val spacingVerticalS = 12.dp
-val spacingVerticalM = 16.dp
-val spacingVerticalL = 20.dp
-val spacingVerticalXl = 24.dp
-val spacingVerticalXxl = 28.dp
-val spacingVerticalXxxl = 32.dp
+val sizeIconX3 = baseDimension * 3
+val sizeIconX4 = baseDimension * 4
+val sizeIconX5 = baseDimension * 5
+val sizeIconX6 = baseDimension * 6
+val sizeIconX20 = baseDimension * 20
+val sizeIconX24 = baseDimension * 24
+val sizeIconX32 = baseDimension * 32
+val sizeIconX40 = baseDimension * 40
 
-val cornersXxs = 4.dp
-val cornersXs = 8.dp
-val cornersS = 12.dp
-val cornersM = 16.dp
-val cornersL = 20.dp
-val cornersXl = 24.dp
-val cornersXxl = 28.dp
-val cornersXxxl = 32.dp
-
-val sizeIconXxs = 12.dp
-val sizeIconXs = 16.dp
-val sizeIconS = 20.dp
-val sizeIconM = 24.dp
-val sizeIconL = 28.dp
-val sizeIconXL = 32.dp
+val cardElevation = 0.dp
