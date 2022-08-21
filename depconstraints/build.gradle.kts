@@ -4,6 +4,7 @@ plugins {
 
 val kotlin = Config.KOTLIN
 val coroutines = "1.6.0-native-mt"
+val inject = "1"
 val appCompat = "1.4.0"
 val coreKtx = "1.7.0"
 val activity = "1.4.0"
@@ -17,7 +18,8 @@ val compose = Config.COMPOSE
 val composeMaterial3 = "1.0.0-alpha03"
 val composeActivity = "1.4.0"
 val composeViewModel = "2.4.0"
-val accompanist = "0.22.0-rc"
+val accompanist = "0.24.5-alpha"
+val coil = "1.4.0"
 val material = "1.5.0"
 val dagger = "2.40.5"
 val retrofit = "2.9.0"
@@ -37,6 +39,7 @@ dependencies {
         api("${Lib.Common.CORE_KTX}:$coreKtx")
         api("${Lib.Common.LIFECYCLE_VIEW_MODEL_KTX}:$lifecycle")
         api("${Lib.Common.MATERIAL}:$material")
+        api("${Lib.Common.INJECT}:$inject")
         api("${Lib.Kotlin.STDLIB}:$kotlin")
         api("${Lib.Kotlin.COROUTINES}:$coroutines")
         api("${Lib.Kotlin.COROUTINES_TEST}:$coroutines")
@@ -52,12 +55,17 @@ dependencies {
         api("${Lib.Retrofit.OKHTTP_LOGGING_INTERCEPTOR}:$okhttp")
         api("${Lib.Compose.ACTIVITY}:$composeActivity")
         api("${Lib.Compose.VIEW_MODEL}:$composeViewModel")
+        api("${Lib.Compose.MATERIAL2}:$compose")
         api("${Lib.Compose.MATERIAL3}:$composeMaterial3")
+        api("${Lib.Compose.MATERIAL_ICONS}:$compose")
         api("${Lib.Compose.RUNTIME}:$compose")
         api("${Lib.Compose.ANIMATION}:$compose")
         api("${Lib.Compose.TOOLING}:$compose")
+        api("${Lib.Compose.TOOLING_PREVIEW}:$compose")
         api("${Lib.Compose.NAVIGATION}:$navigation")
-        api("${Lib.Compose.ACCOMPANIST_PAGER}:$accompanist")
+        api("${Lib.Compose.Accompanist.PAGER}:$accompanist")
+        api("${Lib.Compose.Accompanist.SYSTEM_UI}:$accompanist")
+        api("${Lib.ImageLoading.COIL}:$coil")
         api("${Lib.Test.ARCH_CORE}:$archCoreTesting")
         api("${Lib.Test.RUNNER}:$testRunner")
         api("${Lib.Test.JUnit.PLATFORM}:$junitPlatform")

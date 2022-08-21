@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="descr_definition_share">Share definition</string>
+    <string name="descr_definition_copy">Copy definition</string>
+    <string name="descr_save_to_bookmarks">Save to bookmarks</string>
+    <string name="search_init_hint">type something to search for definitions</string>
+    <string name="search_results_hint">select item to see description</string>
+    <string name="search_not_found_hint">nothing found</string>
+    <string name="btn_get_random">Get random</string>
+    <string name="search_error_hint">ooops.. something wrong happens</string>
+    <string name="btn_try_again">Try again</string>
+    <string name="search_progress_hint">searching…</string>
+    <string name="hint_definition_is_copied">Term is copied to clipboard</string>
+</resources>
