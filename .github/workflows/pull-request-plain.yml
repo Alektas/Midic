@@ -1,0 +1,44 @@
+name: PR pipeline - plain
+
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/android-workflow-preparation
+
+      - name: Run lint checks
+        run: ./gradlew --build-cache lint
+
+      - name: Upload lint reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-reports
+          path: '**/*/build/reports/lint-results-*.html'
+
+  test-units:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/android-workflow-preparation
+
+      - name: Run unit tests
+        run: ./gradlew --build-cache test
+
+  assemble-staging:
+    runs-on: ubuntu-latest
+    needs: test-units
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/android-workflow-preparation
+
+      - name: Assemble staging APK
+        run: ./gradlew --build-cache assembleDebug # TODO: replace `assembleDebug` by `assembleStaging`
+
+      - name: Upload staging APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/*.apk # TODO: replace `.../debug/...` by `.../staging/...`

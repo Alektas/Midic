@@ -1,0 +1,12 @@
+name: Prepare Android CI/CD workflow
+description: Setup JDK and make 'gradlew' executable
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+    - run: chmod +x gradlew
+      shell: bash
